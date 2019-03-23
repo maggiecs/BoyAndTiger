@@ -5,12 +5,21 @@ const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
+const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 
 router.post('/register', (req, res) => {
+  const { errors, isValid } = validateRegisterInput(req.body);
+  
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   User.findOne({ email: req.body.email })
     .then(user => {
       if (user) {
-        return res.status(400).json({ email: "A user has already registered with this address" })
+        errors.email = 'Email already exists';
+        return res.status(400).json(errors);
       } else {
         const newUser = new User({
           handle: req.body.handle,
@@ -32,13 +41,20 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const email = req.body.email;
   const password = req.body.password;
 
   User.findOne({ email })
     .then(user => {
       if (!user) {
-        return res.status(404).json({ email: 'This user does not exist' });
+        errors.email = 'User not found';
+        return res.status(404).json(errors);
       }
 
       bcrypt.compare(password, user.password)
