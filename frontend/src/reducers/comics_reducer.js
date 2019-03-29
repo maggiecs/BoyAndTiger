@@ -15,4 +15,4 @@ const ComicsReducer = (state = { all: {}, comic: {} }, action) => {
     }
 };
 
-export default ComicsReducer;
+export default ComicsReducer; 

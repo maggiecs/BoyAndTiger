@@ -128,13 +128,13 @@ class MainPage extends React.Component {
                       <p>m blurb</p>
                       <div className="personal_sites_wrapper">
                         <a href="https://maggiechen.me/">
-                          <i class="fas fa-user-circle" />
+                          <i className="fas fa-user-circle" />
                         </a>
                         <a href="https://github.com/maggiecs">
-                          <i class="fab fa-github" />
+                          <i className="fab fa-github" />
                         </a>
                         <a href="https://www.linkedin.com/in/maggie-chen1/">
-                          <i class="fab fa-linkedin" />
+                          <i className="fab fa-linkedin" />
                         </a>
                       </div>
                     </div>
@@ -143,13 +143,13 @@ class MainPage extends React.Component {
                       <p>c blurb</p>
                       <div className="personal_sites_wrapper">
                         <a href="https://www.cameroncouch.me/">
-                          <i class="fas fa-user-circle" />
+                          <i className="fas fa-user-circle" />
                         </a>
                         <a href="https://github.com/CameronHCouch">
-                          <i class="fab fa-github" />
+                          <i className="fab fa-github" />
                         </a>
                         <a href="https://www.linkedin.com/in/cameroncouch/">
-                          <i class="fab fa-linkedin" />
+                          <i className="fab fa-linkedin" />
                         </a>
                       </div>
                     </div>
@@ -158,13 +158,13 @@ class MainPage extends React.Component {
                       <p>d blurb</p>
                       <div className="personal_sites_wrapper">
                         <a href="https://derekdai.com/">
-                          <i class="fas fa-user-circle" />
+                          <i className="fas fa-user-circle" />
                         </a>
                         <a href="https://github.com/drkdi/">
-                          <i class="fab fa-github" />
+                          <i className="fab fa-github" />
                         </a>
                         <a href="https://linkedin.com/in/daiderek/">
-                          <i class="fab fa-linkedin" />
+                          <i className="fab fa-linkedin" />
                         </a>
                       </div>
                     </div>
@@ -173,13 +173,13 @@ class MainPage extends React.Component {
                       <p>g blurb</p>
                       <div className="personal_sites_wrapper">
                         <a href="https://www.garykangaroo.com/">
-                          <i class="fas fa-user-circle" />
+                          <i className="fas fa-user-circle" />
                         </a>
                         <a href="https://github.com/kangaree/">
-                          <i class="fab fa-github" />
+                          <i className="fab fa-github" />
                         </a>
                         <a href="https://www.linkedin.com/in/gary-kang-877b9b22/">
-                          <i class="fab fa-linkedin" />
+                          <i className="fab fa-linkedin" />
                         </a>
                       </div>
                     </div>
