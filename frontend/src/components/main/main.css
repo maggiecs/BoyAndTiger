@@ -1,0 +1,176 @@
+h1 {
+   color: blue;
+font-family: 'Open Sans', sans-serif;
+}
+
+p {
+font-family: 'Open Sans', sans-serif;
+}
+
+div {
+font-family: 'Open Sans', sans-serif;
+}
+
+
+/* use for comic nav
+
+background-color: blue;
+position: relative;
+left: 40%;
+display:flex;
+justify-content: space-between;
+font-size: 50px; */
+
+
+.section1 {
+   background-image: url("https://i1.wp.com/pandeia.eu/wp-content/uploads/2014/06/3681290610_31a3e92165_b_d.jpg");
+   background-size: cover; 
+}
+
+.logo {
+   font-size: 75px;
+   color: white;
+   text-shadow: 4px 5px black;
+   font-family: 'Indie Flower', cursive;
+
+     display: flex;
+  justify-content: center;
+   margin: auto;
+   justify-content: space-evenly;
+}
+
+.splashPageImage {
+   position: relative; 
+   left: 50%;
+   transform: translateX(-50%);
+   padding-bottom: 25px;
+}
+
+.main_page_nav {
+   display: flex;
+   width: 700px;
+   font-size: 50px;
+   background-color: blue;
+   align-items: center;
+  text-align: center;
+   justify-content: space-between;
+   position: relative;
+   left: 30%;
+
+}
+
+.boy_tiger_github {
+   color: black;
+   font-size: 50px;
+   position: relative;
+   left: 50%;
+}
+
+.main_page_calendar {
+   width: 150px;
+   height: 100px;
+   background-color: green;
+}
+
+.main_page_scroll_down {
+
+   position: absolute;
+   text-align: center;
+   bottom: 0%;
+   height: 4%;
+   width: 100%;
+   background-color: purple;
+
+   
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+   outline: inherit;
+   
+}
+
+
+
+.section2 {
+   background-image: url("https://cdn.suwalls.com/wallpapers/comics/calvin-and-hobbes-14301-1920x1200.jpg");
+   background-size: cover; 
+}
+
+.about_us {
+   position: absolute;
+   top: 3%;
+   left: 45%;
+}
+
+.people_div {
+   background-color: orange;
+   width: 80%;
+   height: 75%;
+  display: flex;
+  justify-content: center;
+   margin: auto;
+   justify-content: space-evenly;
+
+}
+
+.personal_sites_wrapper {
+   font-size: 50px;
+   display: flex;
+  justify-content: center;
+}
+
+.fa-github {
+   color: black;
+}
+
+.fa-linkedin {
+   color: #0076b5;
+}
+
+.fa-user-circle {
+   color: lightgray;
+}
+
+.person1 {
+   width: 25%;
+   height: 100%;
+   background-color: gray;
+}
+.person2 {
+   width: 25%;
+   height: 100%;
+   background-color: green;
+}
+.person3 {
+   width: 25%;
+   height: 100%;
+   background-color: blue;
+}
+.person4 {
+   width: 25%;
+   height: 100%;
+   background-color: red;
+}
+
+.section3 {
+      background-image: url("https://timedotcom.files.wordpress.com/2014/06/ap050826020930.jpg");
+   background-size: cover; 
+   
+}
+
+.about_bill {
+   position: absolute;
+   top: 3%;
+   left: 45%;
+   color: white;
+   font-size: 50px;
+}
+
+.bill_blurb {
+   font-size: 25px;
+   color: white;
+   text-shadow: 2px 2px black;
+   margin: auto;
+   width: 60%;
+}
