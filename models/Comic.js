@@ -3,12 +3,10 @@ const Schema = mongoose.Schema;
 
 const ComicSchema = new Schema({
     date: {
-        type: Date,
-        // default: Date.now
+        type: Number,
     },
     dialog: {
         type: String,
-        required: true
     },  
 });
 
