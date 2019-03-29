@@ -8,7 +8,7 @@ const ComicsReducer = (state = { all: {}, comic: {} }, action) => {
             newState.all = action.comics.data;
             return newState;
         case RECEIVE_COMIC:
-            newState.comic = action.comics.data;
+            newState.comic = action.comic.data;
             return newState;
         default:
             return state;
