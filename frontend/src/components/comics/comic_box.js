@@ -5,7 +5,8 @@ class ComicBox extends React.Component {
         return (
             <div>
                 <h3>{this.props.date}</h3>
-                <h3>{this.props.dialog}</h3>
+                <img src={ "images/" + this.props.date + ".gif" }></img>
+                <p>{this.props.dialog}</p>
             </div>
         );
     }

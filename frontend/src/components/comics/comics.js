@@ -21,13 +21,11 @@ class Comic extends React.Component {
 
     render() {
         if (this.state.comics.length === 0) {
-            return (<div>There are no Comics</div>)
+            return (<div>Hang tight...</div>)
         } else {
             return (
                 <div>
                     <h2>All Comics</h2>
-                    <img src="images/19951211.gif"></img>
-                    {/* <img src={require('images/19951211.gif"')}></img> */}
                     {this.state.comics.map(comic => (
                         <ComicBox key={comic._id} date={comic.date} dialog={comic.dialog} />
                     ))}
