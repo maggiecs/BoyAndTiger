@@ -18,7 +18,6 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div>
-          <Link to={'/tweets'}>All Tweets</Link>
           <Link to={'/profile'}>Profile</Link>
           <br></br>
           <Link to={'/comics'}>Comics</Link>
