@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import "./comic.css";
+
 
 class Comic extends React.Component {
     constructor(props) {
@@ -20,16 +22,39 @@ class Comic extends React.Component {
     }
 
     render() {
+
+        if (this.state.comic.date) {
+        var dateString = `${this.state.comic.date}`;
+        var year = dateString.slice(0, 4);
+        var month = dateString.slice(4, 6);
+        var day = dateString.slice(6, 8);
+        var date = new Date(year, month - 1, day);
+        var options = {
+            year: 'numeric', month: 'long', day: 'numeric'
+        };
+        date = date.toLocaleString('en-US', options).toString();
+    }
+
+
         if (!this.state.comic) {
             return (<div>Hang tight...</div>)
         } else {
             return (
-                <div>
-                    <h3>{this.state.comic.date}</h3>
-                    <img src={"images/" + this.state.comic.date + ".gif"}></img>
-                    <p>{this.state.comic.dialog}</p>
+              <>
+                <div className="comicWrapper">
+                <h2 className="comicDate">{date}</h2>
+                
+                <img
+                  src={"images/" + this.state.comic.date + ".gif"}
+                  className="comicImage"
+                />
+                
+                <div className="comicControls"></div>
+                {/* <p className="comicDialog">{this.state.comic.dialog}</p> */}
+                
                 </div>
-            )
+              </>
+            );
         };
     }
 }
