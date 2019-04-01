@@ -11,6 +11,11 @@ div {
 font-family: 'Open Sans', sans-serif;
 }
 
+.wallpaper {
+   width: 100%;
+   height: auto;
+}
+
 
 /* use for comic nav
 

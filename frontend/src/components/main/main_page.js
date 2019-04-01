@@ -36,7 +36,7 @@ class MainPage extends React.Component {
     this.setState({ anchorEl: null });
   };
 
-
+  
 
   render() {
     const { anchorEl } = this.state;
@@ -198,18 +198,17 @@ class MainPage extends React.Component {
 
                     <p>
                       This enigma of a man helped shape our childhoods through his art, and
-                      refused to commercialize Calvin and Hobbes
-                      (while lesser men would have in a second), for the better. 
+                      refused to commercialize Calvin and Hobbes, for the better. 
                     </p>
 
                     <p>
                       This website is an ode and homage, to Calvin,
-                      Hobbes, and above all, Bill.
+                      Hobbes, and above all, Bill's resolute character.
                     </p>
 
                     <p>
                       This website was built strictly for
-                      educational purposes (please don't sue us) and all credit is due to
+                      educational purposes and all credit is due to
                       Bill and his work.
                     </p>
                   </div>
