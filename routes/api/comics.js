@@ -42,8 +42,10 @@ router.param('comment', function (req, res, next, id) {
 
 router.patch('/:date/comments/:comment', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     if (req.comment.user && req.comment.user._id.toString() === req.user._id.toString()) {
-        req.comment.text = req.body.text;
-        req.comment.save();
+        let comment = req.comment;
+        comment.text = req.body.text;
+        comment.save();
+        return res.json(comment)
     } else {
         throw "You cannot edit this comment."
     }
