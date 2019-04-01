@@ -34,6 +34,7 @@ router.post('/:date/comments', passport.authenticate('jwt', { session: false }),
         let comment = new Comment(req.body.comment);
         comment.text = req.body.text;
         comment.comicDate = req.params.date;
+        comment.user = user.id;
         comment.save();
         
         Comic.findOne( { date: req.params.date })
@@ -47,30 +48,26 @@ router.post('/:date/comments', passport.authenticate('jwt', { session: false }),
     }).catch(err => console.log(err));
 });
 
-// throws 404 error if comment doesn't exist
-// is this wanted/needed?
 router.param('comment', function(req,res,next,id){
     Comment.findById(id).then( comment => {
         if(!comment) return res.sendStatus(404) ;
-
         req.comment = comment;
-
         return next();
     }).catch(next);
 });
 
 router.delete('/:date/comments/:comment', passport.authenticate('jwt', { session: false }), (req,res,next) => {
-    User.findById(req.payload.id).then(user => {
-        if(req.comment.author._id.toString() === req.payload.id.toString()){
-            req.comic.comments.remove(req.comment._id);
-            return req.comic.save()
-                .then(Comment.findOne({_id: req.comment._id}).remove().exec())
-                .then( () => { return res.sendStatus(204)})
-        } else {
-            return res.sendStatus(403);
-        }
-    }).catch(next);
+    if(req.comment.user && req.comment.user._id.toString() === req.user._id.toString()){
+        Comic.findOne({ date: req.params.date })
+            .then(comic => {
+                comic.comments.remove(req.comment.id)
+                comic.save();
+            })
+            .catch(err => console.log(err));
+        req.comment.delete().then(() => res.sendStatus(204)).catch(() => res.sendStatus(403));
+    } else {
+        throw "You cannot delete this comment."
+    }
 });
-
 
 module.exports = router;
