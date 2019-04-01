@@ -4,11 +4,33 @@ const passport = require('passport');
 const Comic = require('../../models/Comic');
 const Comment = require('../../models/Comment');
 
+router.get('/', (req, res) => {
+    Comic.find()
+        .sort({ date: 1 })
+        .then(comics => res.json(comics))
+        .catch(err => 
+            res.status(404).json({ nocomicsfound: 'No comics found' }));
+});
+
+router.get('/:date', (req, res) => {
+    Comic.find({ date: req.params.date })
+        .then(comic => res.json(comic))
+        .catch(err =>
+            res.status(404).json({ nocomicfound: 'No comic found with that date' })
+        );
+});
+
 router.get('/:date/comments', (req, res, next) => {
     Comment.find({ comicDate: req.params.date })
         .sort({ date: 1 })
         .then(comments => res.json(comments))
         .catch(err => res.status(404).json({ nocommentsfound: 'No comments found' }));
+});
+
+router.get('/:date/comments/:comment', (req, res, next) => {
+    Comment.findOne({ comicDate: req.params.date })
+        .then(comments => res.json(comments))
+        .catch(err => res.status(404).json({ nocommentsfound: 'No comment found' }));
 });
 
 router.post('/:date/comments', passport.authenticate('jwt', { session: false }), (req, res, next) => {
@@ -64,22 +86,5 @@ router.delete('/:date/comments/:comment', passport.authenticate('jwt', { session
         throw "You cannot delete this comment."
     }
 });
-
-router.get('/', (req, res) => {
-    Comic.find()
-        .sort({ date: 1 })
-        .then(comics => res.json(comics))
-        .catch(err => res.status(404).json({ nocomicsfound: 'No comics found' }));
-});
-
-
-router.get('/:date', (req, res) => {
-    Comic.find( {date: req.params.date })
-        .then(comic => res.json(comic))
-        .catch(err =>
-            res.status(404).json({ nocomicfound: 'No comic found with that date' })
-        );
-});
-
 
 module.exports = router;
