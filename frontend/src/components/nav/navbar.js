@@ -7,11 +7,26 @@ class NavBar extends React.Component {
     super(props);
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
+    this.state = { searchedQuery: "" };
   }
 
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
+  }
+
+  update(field) {
+    return e => {
+      this.setState({
+        [field]: e.currentTarget.value
+      });
+
+      // if (e.currentTarget.value !== "") {
+      //   this.props.fetchSearchedComics(e.currentTarget.value);
+      // } else {
+      //   this.props.receiveNullComics();
+      // }
+    };
   }
 
   getLinks() {
@@ -39,8 +54,20 @@ class NavBar extends React.Component {
   render() {
     return (
       <div>
-        {/* <h1>Chirper</h1> */}
-        {/* { this.getLinks() } */}
+        <h1>Boy and Tiger</h1>
+        <li className="nav-search-container">
+          <img className="nav-search-icon" src="images/search_icon.png" />
+        <input type="text"
+          value={this.state.searchedQuery}
+          className="nav-search"
+          onChange={this.update('searchedQuery')}
+          placeholder="Search"
+        />
+        {/* <ul className="nav-search-user-list"> */}
+          {/* {this.renderComics()} */}
+        {/* </ul> */}
+        </li> 
+        { this.getLinks() }
       </div>
     );
   }
