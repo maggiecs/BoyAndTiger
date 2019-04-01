@@ -10,6 +10,10 @@ const CommentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
+  comic: {
+    type: Schema.Types.ObjectId,
+    ref: 'comics'
+  },
   date: {
     type: Date,
     default: Date.now

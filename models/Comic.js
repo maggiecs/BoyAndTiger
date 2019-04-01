@@ -7,7 +7,8 @@ const ComicSchema = new Schema({
     },
     dialog: {
         type: String,
-    },  
+    },
+    comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
 });
 
 module.exports = Comic = mongoose.model('comic', ComicSchema);
