@@ -23,9 +23,8 @@ import color from '@material-ui/core/colors/lightGreen';
 // }
 
 class MainPage extends React.Component {
-  
   state = {
-    anchorEl: null,
+    anchorEl: null
   };
 
   handleClick = event => {
@@ -36,28 +35,34 @@ class MainPage extends React.Component {
     this.setState({ anchorEl: null });
   };
 
-  
+  rand1 = Math.floor(Math.random() * 7) + 1;
+  rand2 = Math.floor(Math.random() * 7) + 1;
 
   render() {
+    
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
-
-
-
+    
     return (
       <div>
-
         <ReactFullpage
           navigation
           controlArrows="true"
-          sectionsColor={["#00cf35", "#7c5cff", "#001935", "#001935"]}
+          // sectionsColor={["#00cf35", "#7c5cff", "#001935", "#001935"]}
           navigationPosition="left"
           slidesNavigation="true"
           render={({ fullpageApi }) => {
             return (
               <div id="fullpage-wrapper">
-                <div className="section section1">
-
+                <div
+                  className="section section1"
+                  style={{
+                    backgroundImage: `url("wallpapers/wallpaper${
+                      this.rand2
+                    }.jpg")`,
+                    backgroundSize: 'cover',
+                  }}
+                >
                   <h1 className="logo">Boy and Tiger</h1>
 
                   <img
@@ -120,12 +125,26 @@ class MainPage extends React.Component {
                   </div>
                 </div>
 
-                <div className="section section2">
+                <div className="section section2"
+                  style={{
+                    backgroundImage: `url("wallpapers/wallpaper${
+                      this.rand1
+                      }.jpg")`,
+                    backgroundSize: 'cover',
+                  }}
+                  >
                   <h1 className="about_us"> About Us</h1>
 
                   <div className="people_div">
                     <div className="person1">
-                      <p>m blurb</p>
+                      <img src={"about/magatha.png"} className="aboutImg"></img>
+                      <p>
+                        Maggie has always enjoyed reading the Comics section
+                        whenever she grabbed a newspaper. She thought Calvin and
+                        Hobbes was one of the most fun and relatable comics.
+                        When she’s not coding, she is finding new mountains to
+                        hike and new science fiction books to read.
+                      </p>
                       <div className="personal_sites_wrapper">
                         <a href="https://maggiechen.me/">
                           <i className="fas fa-user-circle" />
@@ -140,7 +159,17 @@ class MainPage extends React.Component {
                     </div>
 
                     <div className="person2">
-                      <p>c blurb</p>
+                      <img src={"about/cameron.jpg"} className="aboutImg"></img>
+
+                      <p>
+                        Cameron fully intends on reading The Complete Calvin and
+                        Hobbes that is sitting on his bookshelf. It’ll happen
+                        one day! He is also a webcomic connoisseur whose
+                        cherished possessions include the two
+                        picturesforsadchildren books. When he’s not writing
+                        code, Cameron also writes short stories, plays, and
+                        poems.
+                      </p>
                       <div className="personal_sites_wrapper">
                         <a href="https://www.cameroncouch.me/">
                           <i className="fas fa-user-circle" />
@@ -155,7 +184,16 @@ class MainPage extends React.Component {
                     </div>
 
                     <div className="person3">
-                      <p>d blurb</p>
+                      <img src={"about/derek.jpg"} className="aboutImg"></img>
+
+                      <p>
+                        Derek loved Calvin and Hobbes growing up, and read all
+                        of the books cover to cover multiple times. He's a big
+                        fan of the existential dread Calvin faces daily, and
+                        enjoys the company. When he's not writing code, Derek
+                        likes to experience new cheeses and window shop for
+                        things he can't afford.
+                      </p>
                       <div className="personal_sites_wrapper">
                         <a href="https://derekdai.com/">
                           <i className="fas fa-user-circle" />
@@ -170,7 +208,16 @@ class MainPage extends React.Component {
                     </div>
 
                     <div className="person4">
-                      <p>g blurb</p>
+                      <img src={"about/gary.png"} className="aboutImg"></img>
+
+                      <p>
+                        Gary grew up with heaps of Calvin and Hobbes treasuries.
+                        He was obsessed with collecting them- from the essential
+                        to the authoritative. He was heartbroken to find they
+                        did not make his parents’ cardboard boxes when they
+                        moved a few years ago. When he's not writing code, Gary
+                        likes to play video games and watch TV/movies.
+                      </p>
                       <div className="personal_sites_wrapper">
                         <a href="https://www.garykangaroo.com/">
                           <i className="fas fa-user-circle" />
@@ -186,30 +233,33 @@ class MainPage extends React.Component {
                   </div>
                 </div>
 
-                <div className="section section3">
+                <div className="section section3"
+                  style={{
+                    backgroundImage: `url("wallpapers/bill.jpg")`,
+                    backgroundSize: 'cover',
+                  }}>
                   <h1 className="about_bill">Bill?</h1>
 
                   <div className="bill_blurb">
                     <p>
-                      Bill Watterson, a golden God that walked
-                      amongst men, never compromised on his artistic
-                      vision. 
+                      Bill Watterson, a golden God that walked amongst men,
+                      never compromised on his artistic vision.
                     </p>
 
                     <p>
-                      This enigma of a man helped shape our childhoods through his art, and
-                      refused to commercialize Calvin and Hobbes, for the better. 
+                      This enigma of a man helped shape our childhoods through
+                      his art, and refused to commercialize Calvin and Hobbes,
+                      for the better.
                     </p>
 
                     <p>
-                      This website is an ode and homage, to Calvin,
-                      Hobbes, and above all, Bill's resolute character.
+                      This website is an ode and homage, to Calvin, Hobbes, and
+                      above all, Bill's resolute character.
                     </p>
 
                     <p>
-                      This website was built strictly for
-                      educational purposes and all credit is due to
-                      Bill and his work.
+                      This website was built strictly for educational purposes
+                      and all credit is due to Bill and his work.
                     </p>
                   </div>
                 </div>
