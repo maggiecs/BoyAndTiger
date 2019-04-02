@@ -1,0 +1,14 @@
+.nav-search-container {
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  background-color: orange;
+  box-sizing: border-box;
+}
+
+.nav-link {
+  padding: 0px 5px;
+}

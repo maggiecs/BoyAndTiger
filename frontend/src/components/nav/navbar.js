@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
+import './../main/reset.css';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -33,19 +34,19 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div>
-          <Link to={'/profile'}>Profile</Link>
+          <Link to={'/profile'} className="nav-link">Profile</Link>
           <br></br>
-          <Link to={'/comics'}>Comics</Link>
+          <Link to={'/comics'} className="nav-link">Comics</Link>
           <br></br>
-          <Link to={'/new_tweet'}>Write a Tweet</Link>
+          <Link to={'/new_tweet'} className="nav-link">Fan Drawings</Link>
           <button onClick={this.logoutUser}>Logout</button>
         </div>
       );
     } else {
       return (
         <div>
-          <Link to={'/signup'}>Signup</Link>
-          <Link to={'/login'}>Login</Link>
+          <Link to={'/signup'} className="nav-link">Signup</Link>
+          <Link to={'/login'} className="nav-link">Login</Link>
         </div>
       );
     }
@@ -54,20 +55,18 @@ class NavBar extends React.Component {
   render() {
     return (
       <div>
+        <div className="nav-search-container" >
         <h1>Boy and Tiger</h1>
-        <li className="nav-search-container">
-          <img className="nav-search-icon" src="images/search_icon.png" />
-        <input type="text"
-          value={this.state.searchedQuery}
-          className="nav-search"
-          onChange={this.update('searchedQuery')}
-          placeholder="Search"
-        />
-        {/* <ul className="nav-search-user-list"> */}
-          {/* {this.renderComics()} */}
-        {/* </ul> */}
-        </li> 
-        { this.getLinks() }
+          <input type="text"
+            value={this.state.searchedQuery}
+            className="nav-search"
+            onChange={this.update('searchedQuery')}
+            placeholder="Search..."
+          />
+          <button type="submit"><i className="fa fa-search"></i></button>
+          {this.getLinks()}
+        </div> 
+       
       </div>
     );
   }
