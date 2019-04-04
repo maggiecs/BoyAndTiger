@@ -101,7 +101,8 @@ class MainPage extends React.Component {
 
                     <div className="main_page_calendar">
                       <DatePicker
-                        inline
+                        // inline
+                        value="click here"
                         selected={this.date1}
                         selectsStart
                         minDate={this.date1}
