@@ -21,8 +21,19 @@ class NavBar extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.fetchComics(this.state).then(() => {
-      this.props.history.push('/results')
-    })
+      this.props.history.push({
+        pathname: '/results',
+        search: `?query=${this.state.searchedQuery}`})
+    });
+
+  
+    // this.props.history.push({
+    //     pathname: '/results',
+    //     search: `?query=${this.state.searchedQuery}`
+    //   });
+
+    // localStorage.setItem('searchedQuery', JSON.stringify(this.state.searchedQuery));
+
     // this.setState({ searchedQuery: "" });
   }
 
@@ -31,12 +42,6 @@ class NavBar extends React.Component {
       this.setState({
         [field]: e.currentTarget.value
       });
-
-      // if (e.currentTarget.value !== "") {
-      //   this.props.fetchSearchedComics(e.currentTarget.value);
-      // } else {
-      //   this.props.receiveNullComics();
-      // }
     };
   }
 
@@ -61,6 +66,7 @@ class NavBar extends React.Component {
       );
     }
   }
+
 
   render() {
     return (

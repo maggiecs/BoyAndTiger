@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // fetchComics: () => dispatch(fetchComics())
+        fetchComics: (searchedQuery) => dispatch(fetchComics(searchedQuery))
     };
 };
 

@@ -6,6 +6,11 @@ import './../main/reset.css';
 class SearchedComics extends React.Component {
     constructor(props) {
         super(props);
+        this.query = new URLSearchParams(this.props.location.search).get('query');
+    }
+
+    componentDidMount() {
+        this.props.fetchComics({ searchedQuery: this.query });
     }
 
     render() {
