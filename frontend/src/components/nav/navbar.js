@@ -13,6 +13,14 @@ class NavBar extends React.Component {
     this.state = { searchedQuery: "" };
   }
 
+  componentDidMount() {
+    const searchedQuery = new URLSearchParams(this.props.location.search).get('query');
+    
+    if (searchedQuery) {
+      this.setState({ searchedQuery: searchedQuery })
+    };
+  }
+
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
@@ -26,7 +34,6 @@ class NavBar extends React.Component {
         search: `?query=${this.state.searchedQuery}`})
     });
 
-  
     // this.props.history.push({
     //     pathname: '/results',
     //     search: `?query=${this.state.searchedQuery}`
