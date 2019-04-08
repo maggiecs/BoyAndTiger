@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from "react-router";
 import './navbar.css';
 import './../main/reset.css';
 
@@ -8,12 +9,21 @@ class NavBar extends React.Component {
     super(props);
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = { searchedQuery: "" };
   }
 
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.fetchComics(this.state).then(() => {
+      this.props.history.push('/results')
+    })
+    // this.setState({ searchedQuery: "" });
   }
 
   update(field) {
@@ -56,14 +66,16 @@ class NavBar extends React.Component {
     return (
       <div>
         <div className="nav-search-container" >
-        <h1>Boy and Tiger</h1>
-          <input type="text"
-            value={this.state.searchedQuery}
-            className="nav-search"
-            onChange={this.update('searchedQuery')}
-            placeholder="Search..."
-          />
-          <button type="submit"><i className="fa fa-search"></i></button>
+          <Link to={'/'} className="nav-link">Boy and Tiger</Link>
+          <form className="nav-search-form" onSubmit={this.handleSubmit.bind(this)}>
+            <input type="text"
+              value={this.state.searchedQuery}
+              className="nav-search"
+              onChange={this.update('searchedQuery')}
+              placeholder="Search..."
+            />
+            <button type="submit"><i className="fa fa-search"></i></button>
+          </form>
           {this.getLinks()}
         </div> 
        
@@ -72,4 +84,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
