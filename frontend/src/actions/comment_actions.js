@@ -1,10 +1,8 @@
-import { getComments, getComment, 
-         createComment, editComment, 
-         deleteComment } from '../util/comic_api_util';
+import * as CommentUtil from '../util/comment_api_util';
 
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
-export const DELETE_COMMENT = "DELETE_COMMENTS";
+export const REMOVE_COMMENT = "REMOVE_COMMENT";
 
 export const receiveComments = comments => ({
   type: RECEIVE_COMMENTS,
@@ -16,37 +14,37 @@ export const receiveComment = comment => ({
   comment
 });
 
-export const deleteComment = commentId => ({
-  type: DELETE_COMMENT,
+export const removeComment = commentId => ({
+  type: REMOVE_COMMENT,
   commentId
 });
 
 export const fetchComments = date => dispatch => (
-  getComments(date)
+  CommentUtil.getComments(date)
     .then(comments => dispatch(receiveComments(comments)))
     .catch(err => console.log(err))
 );
 
 export const fetchComment = (date, commentId) => dispatch => (
-  getComment(date, commentId)
+  CommentUtil.getComment(date, commentId)
     .then(comment => dispatch(receiveComment(comment)))
     .catch(err => console.log(err))
 );
 
 export const createComment = (date, data) => dispatch => (
-  createComment(date, data)
+  CommentUtil.createComment(date, data)
     .then(comment => dispatch(receiveComment(comment)))
     .catch(err => console.log(err))
 );
 
 export const editComment = (date, data) => dispatch => (
-  editComment(date, data)
+  CommentUtil.editComment(date, data)
     .then(comment => dispatch(receiveComment(comment)))
     .catch(err => console.log(err))
 );
 
 export const deleteComment = (date, data) => dispatch => (
-  deleteComment(date, data)
-    .then(comment => dispatch(deleteComment(comment)))
+  CommentUtil.deleteComment(date, data)
+    .then(comment => dispatch(removeComment(comment)))
     .catch(err => console.log(err))
 );

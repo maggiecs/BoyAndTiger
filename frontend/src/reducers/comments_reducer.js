@@ -1,4 +1,4 @@
-import { RECEIVE_COMMENTS, RECEIVE_COMMENT, DELETE_COMMENT } from '../actions/comic_actions';
+import { RECEIVE_COMMENTS, RECEIVE_COMMENT, REMOVE_COMMENT } from '../actions/comment_actions';
 
 const CommentsReducer = (state = { all: {}, comment: {} }, action) => {
   Object.freeze(state);
@@ -10,8 +10,10 @@ const CommentsReducer = (state = { all: {}, comment: {} }, action) => {
     case RECEIVE_COMMENT:
       newState.comment = action.comment.data;
       return newState;
-    case DELETE_COMMENT:
-
+    case REMOVE_COMMENT:
+      newState.comment = action.comment.data;
+      delete newState[action.commentId]
+      return newState;
     default:
       return state;
   }
