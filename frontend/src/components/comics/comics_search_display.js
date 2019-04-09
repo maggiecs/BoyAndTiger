@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './comics_search.css';
 import './../main/reset.css';
+import { NONAME } from 'dns';
 
 
 
@@ -49,7 +50,7 @@ class SearchedComics extends React.Component {
         
 
         return (
-            <div className="comics-container">
+            <div className="comics-container" style={{ backgroundSize: "auto"}}>
                 {searchedComics}
             </div>
         );
