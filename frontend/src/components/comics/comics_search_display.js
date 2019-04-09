@@ -23,6 +23,7 @@ class SearchedComics extends React.Component {
                     <div className="comic-image">
                         <Link to={'/comics/' + comic.datestring}><img
                             src={"images/" + comic.datestring + ".gif"}
+                            alt={comic.datestring}
                             className="comic-thumbnail"
                         /></Link>
                     </div>
