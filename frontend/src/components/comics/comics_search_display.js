@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import './comics_search.css';
 import './../main/reset.css';
 
+
+
 class SearchedComics extends React.Component {
     constructor(props) {
         super(props);
@@ -13,7 +15,18 @@ class SearchedComics extends React.Component {
         this.props.fetchComics({ searchedQuery: this.query });
     }
 
+    
+
     render() {
+        // let sectionStyle;
+
+        //     if (this.props.history.location.search === "?query=Spaceman%20Spiff") {
+        //         sectionStyle = {
+        //             backgroundImage: `url("wallpapers/bill.jpg")`,
+        //             backgroundSize: "cover"
+
+        //     }
+        //     else
         let comics = this.props.comics;
         let searchedComics;
 
@@ -21,8 +34,14 @@ class SearchedComics extends React.Component {
             return (
                 <div key={comic._id} className="comic-item">
                     <div className="comic-image">
+<<<<<<< HEAD
+                        <Link to={'/comics/' + comic.datestring}><img
+                            src={"images/" + comic.datestring + ".gif"}
+=======
                         <Link to={'/comics/' + comic.date}><img
                             src={"images/" + comic.date + ".gif"}
+                            alt="comic"
+>>>>>>> fix nav bar and character arc select
                             className="comic-thumbnail"
                         /></Link>
                     </div>

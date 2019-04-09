@@ -10,5 +10,10 @@
 }
 
 .nav-link {
-  padding: 0px 5px;
+  padding: 0px 10px;
+}
+
+.nav-search-form {
+  position: absolute;
+  left: 30%;
 }
