@@ -16,13 +16,6 @@ class Comic extends React.Component {
         this.props.fetchComic(this.props.match.params.date);
     }
 
-
-    componentDidUpdate(prevProps) {
-        if (prevProps.match.params.date !== this.props.match.params.date) {
-            this.props.fetchComic(this.props.match.params.date);
-        }
-    }
-
     componentWillReceiveProps(newState) {
         // A comic comes in as an array of one element.
         this.setState({ comic: newState.comic[0] });
@@ -30,31 +23,31 @@ class Comic extends React.Component {
 
     render() {
 
+        if (this.state.comic.date) {
+        var dateString = `${this.state.comic.date}`;
+        var year = dateString.slice(0, 4);
+        var month = dateString.slice(4, 6);
+        var day = dateString.slice(6, 8);
+        var date = new Date(year, month - 1, day);
+        var options = {
+            year: 'numeric', month: 'long', day: 'numeric'
+        };
+        date = date.toLocaleString('en-US', options).toString();
+    }
+
 
         if (!this.state.comic) {
             return (<div>Hang tight...</div>)
         } else {
-            if (this.state.comic.date) {
-                var dateString = `${this.state.comic.date}`;
-                var year = dateString.slice(0, 4);
-                var month = dateString.slice(4, 6);
-                var day = dateString.slice(6, 8);
-                var date = new Date(year, month - 1, day);
-                var options = {
-                    year: 'numeric', month: 'long', day: 'numeric'
-                };
-                date = date.toLocaleString('en-US', options).toString();
-            }
-
             return (
               <>
                 <div className="comicWrapper">
                 <h2 className="comicDate">{date}</h2>
                 
                 <img
-                    alt="comic"
-                    src={"https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" + this.state.comic.datestring + ".jpg"}
-                    className="comicImage"
+                 alt="comic"
+                  src={"images/" + this.state.comic.date + ".gif"}
+                  className="comicImage"
                 />
                 
                 <div className="comicControls"></div>
