@@ -34,14 +34,8 @@ class SearchedComics extends React.Component {
             return (
                 <div key={comic._id} className="comic-item">
                     <div className="comic-image">
-<<<<<<< HEAD
                         <Link to={'/comics/' + comic.datestring}><img
                             src={"images/" + comic.datestring + ".gif"}
-=======
-                        <Link to={'/comics/' + comic.date}><img
-                            src={"images/" + comic.date + ".gif"}
-                            alt="comic"
->>>>>>> fix nav bar and character arc select
                             className="comic-thumbnail"
                         /></Link>
                     </div>
