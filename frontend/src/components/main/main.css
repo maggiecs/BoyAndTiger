@@ -41,6 +41,7 @@ font-size: 50px; */
 
 .splashPageImage {
    position: relative; 
+   width: 75%;
    left: 50%;
    transform: translateX(-50%);
    padding-bottom: 25px;
@@ -67,9 +68,10 @@ font-size: 50px; */
 }
 
 .main_page_calendar {
-   width: 150px;
+   /* width: 150px;
    height: 100px;
-   background-color: green;
+   background-color: green; */
+
 }
 
 .main_page_scroll_down {
