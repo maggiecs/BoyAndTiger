@@ -3,9 +3,14 @@ const router = express.Router();
 const Comic = require('../../models/Comic');
 
 router.get('/', (req, res) => {
+    const { skip = 0, limit = 10} = req.query;
+
     if (req.query.searchedQuery) {
         const regex = new RegExp(escapeRegex(req.query.searchedQuery), 'gi');
-        Comic.find({ "dialog": regex })
+        Comic.find({ "dialog": regex }, {
+            skip: Number(skip),
+            limit: Number(limit)
+        })
             .sort({ date: 1 })
             .then(comics => res.json(comics))
             .catch(err => res.status(404).json({ nocomicsfound: 'No comics found' }));   
