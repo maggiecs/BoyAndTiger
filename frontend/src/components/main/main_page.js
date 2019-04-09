@@ -9,7 +9,7 @@ import Fade from "@material-ui/core/Fade";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import color from '@material-ui/core/colors/lightGreen';
+
 
 // class MySection extends React.Component {
    
@@ -23,8 +23,27 @@ import color from '@material-ui/core/colors/lightGreen';
 // }
 
 class MainPage extends React.Component {
-  state = {
-    anchorEl: null
+
+  constructor(props) {
+    super(props);
+  this.state = {
+    anchorEl: null,
+  };
+  this.handleCalendarPick = this.handleCalendarPick.bind(this);
+}
+
+  handleCalendarPick = date => {
+  
+    let yyyy = date.getFullYear();
+    let mm = date.getMonth() + 1;
+    let dd = date.getDate();
+    mm = ((mm > 9 ? '' : '0') + mm);
+    dd = ((dd > 9 ? '' : '0') + dd); 
+    let fullDate = yyyy + mm + dd;
+    console.log(fullDate)
+    // redirect to fullDate.img
+    // browserHistory.push(`/comics/${fullDate}`);
+    this.props.history.push(`/comics/${fullDate}`);    
   };
 
   handleClick = event => {
@@ -37,6 +56,8 @@ class MainPage extends React.Component {
 
   rand1 = Math.floor(Math.random() * 7) + 1;
   rand2 = Math.floor(Math.random() * 7) + 1;
+  date1 = new Date(1985,11,18);
+  date2 = new Date(1995,12,31);
 
   render() {
     
@@ -60,7 +81,7 @@ class MainPage extends React.Component {
                     backgroundImage: `url("wallpapers/wallpaper${
                       this.rand2
                     }.jpg")`,
-                    backgroundSize: 'cover',
+                    backgroundSize: "cover"
                   }}
                 >
                   <h1 className="logo">Boy and Tiger</h1>
@@ -77,7 +98,20 @@ class MainPage extends React.Component {
                     <div>
                       <i className="fas fa-random" />
                     </div>
-                    <div className="main_page_calendar" />
+
+                    <div className="main_page_calendar">
+                      <DatePicker
+                        // inline
+                        value="click here"
+                        selected={this.date1}
+                        selectsStart
+                        minDate={this.date1}
+                        maxDate={this.date2}
+                        onChange={event =>
+                          this.handleCalendarPick(event)
+                        }
+                      />
+                    </div>
 
                     <div>
                       <Button
@@ -125,24 +159,30 @@ class MainPage extends React.Component {
                   </div>
                 </div>
 
-                <div className="section section2"
+                <div
+                  className="section section2"
                   style={{
                     backgroundImage: `url("wallpapers/wallpaper${
                       this.rand1
-                      }.jpg")`,
-                    backgroundSize: 'cover',
+                    }.jpg")`,
+                    backgroundSize: "cover"
                   }}
-                  >
+                >
                   <h1 className="about_us"> About Us</h1>
 
                   <div className="people_div">
                     <div className="person1">
-                      <img src={"about/magatha.png"} className="aboutImg"></img>
+                      <img
+                      alt="magatha pic"
+                        src={"about/magatha.png"}
+                        className="aboutImg"
+                      />
                       <p>
-                        Maggie has always enjoyed reading the Comics section
-                        whenever she grabbed a newspaper. She thought Calvin and
-                        Hobbes was one of the most fun and relatable comics.
-                        When she’s not coding, she is finding new mountains to
+                        Maggie has always enjoyed reading the Comics
+                        section whenever she grabbed a newspaper.
+                        She thought Calvin and Hobbes was one of the
+                        most fun and relatable comics. When she’s
+                        not coding, she is finding new mountains to
                         hike and new science fiction books to read.
                       </p>
                       <div className="personal_sites_wrapper">
@@ -159,16 +199,21 @@ class MainPage extends React.Component {
                     </div>
 
                     <div className="person2">
-                      <img src={"about/cameron.jpg"} className="aboutImg"></img>
+                      <img
+                      alt="cameron pic"
+                        src={"about/cameron.jpg"}
+                        className="aboutImg"
+                      />
 
                       <p>
-                        Cameron fully intends on reading The Complete Calvin and
-                        Hobbes that is sitting on his bookshelf. It’ll happen
-                        one day! He is also a webcomic connoisseur whose
+                        Cameron fully intends on reading The
+                        Complete Calvin and Hobbes that is sitting
+                        on his bookshelf. It’ll happen one day! He
+                        is also a webcomic connoisseur whose
                         cherished possessions include the two
-                        picturesforsadchildren books. When he’s not writing
-                        code, Cameron also writes short stories, plays, and
-                        poems.
+                        picturesforsadchildren books. When he’s not
+                        writing code, Cameron also writes short
+                        stories, plays, and poems.
                       </p>
                       <div className="personal_sites_wrapper">
                         <a href="https://www.cameroncouch.me/">
@@ -184,15 +229,20 @@ class MainPage extends React.Component {
                     </div>
 
                     <div className="person3">
-                      <img src={"about/derek.jpg"} className="aboutImg"></img>
+                      <img
+                      alt="derek pic"
+                        src={"about/derek.jpg"}
+                        className="aboutImg"
+                      />
 
                       <p>
-                        Derek loved Calvin and Hobbes growing up, and read all
-                        of the books cover to cover multiple times. He's a big
-                        fan of the existential dread Calvin faces daily, and
-                        enjoys the company. When he's not writing code, Derek
-                        likes to experience new cheeses and window shop for
-                        things he can't afford.
+                        Derek loved Calvin and Hobbes growing up,
+                        and read all of the books cover to cover
+                        multiple times. He's a big fan of the
+                        existential dread Calvin faces daily, and
+                        enjoys the company. When he's not writing
+                        code, Derek likes to experience new cheeses
+                        and window shop for things he can't afford.
                       </p>
                       <div className="personal_sites_wrapper">
                         <a href="https://derekdai.com/">
@@ -208,15 +258,21 @@ class MainPage extends React.Component {
                     </div>
 
                     <div className="person4">
-                      <img src={"about/gary.png"} className="aboutImg"></img>
+                      <img
+                      alt="gary pic"
+                        src={"about/gary.png"}
+                        className="aboutImg"
+                      />
 
                       <p>
-                        Gary grew up with heaps of Calvin and Hobbes treasuries.
-                        He was obsessed with collecting them- from the essential
-                        to the authoritative. He was heartbroken to find they
-                        did not make his parents’ cardboard boxes when they
-                        moved a few years ago. When he's not writing code, Gary
-                        likes to play video games and watch TV/movies.
+                        Gary grew up with heaps of Calvin and Hobbes
+                        treasuries. He was obsessed with collecting
+                        them- from the essential to the
+                        authoritative. He was heartbroken to find
+                        they did not make his parents’ cardboard
+                        boxes when they moved a few years ago. When
+                        he's not writing code, Gary likes to play
+                        video games and watch TV/movies.
                       </p>
                       <div className="personal_sites_wrapper">
                         <a href="https://www.garykangaroo.com/">
@@ -233,33 +289,39 @@ class MainPage extends React.Component {
                   </div>
                 </div>
 
-                <div className="section section3"
+                <div
+                  className="section section3"
                   style={{
                     backgroundImage: `url("wallpapers/bill.jpg")`,
-                    backgroundSize: 'cover',
-                  }}>
+                    backgroundSize: "cover"
+                  }}
+                >
                   <h1 className="about_bill">Bill?</h1>
 
                   <div className="bill_blurb">
                     <p>
-                      Bill Watterson, a golden God that walked amongst men,
-                      never compromised on his artistic vision.
+                      Bill Watterson, a golden God that walked
+                      amongst men, never compromised on his artistic
+                      vision.
                     </p>
 
                     <p>
-                      This enigma of a man helped shape our childhoods through
-                      his art, and refused to commercialize Calvin and Hobbes,
-                      for the better.
+                      This enigma of a man helped shape our
+                      childhoods through his art, and refused to
+                      commercialize Calvin and Hobbes, for the
+                      better.
                     </p>
 
                     <p>
-                      This website is an ode and homage, to Calvin, Hobbes, and
-                      above all, Bill's resolute character.
+                      This website is an ode and homage, to Calvin,
+                      Hobbes, and above all, Bill's resolute
+                      character.
                     </p>
 
                     <p>
-                      This website was built strictly for educational purposes
-                      and all credit is due to Bill and his work.
+                      This website was built strictly for
+                      educational purposes and all credit is due to
+                      Bill and his work.
                     </p>
                   </div>
                 </div>

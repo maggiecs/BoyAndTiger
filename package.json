@@ -26,6 +26,8 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "react-datepicker": "^2.3.0",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
     "validator": "^10.11.0"
   },
   "devDependencies": {
