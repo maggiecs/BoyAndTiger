@@ -45,9 +45,9 @@ class Comic extends React.Component {
                 <h2 className="comicDate">{date}</h2>
                 
                 <img
-                 alt="comic"
-                  src={"images/" + this.state.comic.date + ".gif"}
-                  className="comicImage"
+                    alt="comic"
+                    src={"https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" + this.state.comic.date + ".jpg"}
+                    className="comicImage"
                 />
                 
                 <div className="comicControls"></div>
