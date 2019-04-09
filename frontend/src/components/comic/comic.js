@@ -51,11 +51,15 @@ class Comic extends React.Component {
                 <div className="comicWrapper">
                 <h2 className="comicDate">{date}</h2>
                 
-                <img
-                    alt="comic"
-                    src={"https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" + this.state.comic.datestring + ".jpg"}
-                    className="comicImage"
-                />
+                {this.state.comic.datestring ?
+                    <img
+                        alt="comic"
+                        src={"https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" + this.state.comic.datestring + ".jpg"}
+                        className="comicImage"
+                    />
+                    :
+                    null
+                }
                 
                 <div className="comicControls"></div>
                 {/* <p className="comicDialog">{this.state.comic.dialog}</p> */}
