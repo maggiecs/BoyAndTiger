@@ -11,6 +11,8 @@ class Comic extends React.Component {
         this.state = {
             comic: {}
         };
+
+        this.onKeyDown = this.onKeyDown.bind(this);
     }
 
     componentWillMount() {
@@ -24,9 +26,38 @@ class Comic extends React.Component {
         }
     }
 
+    componentDidMount() {
+        document.addEventListener("keydown", this.onKeyDown, false);
+        
+    }
+
     componentWillReceiveProps(newState) {
         // A comic comes in as an array of one element.
         this.setState({ comic: newState.comic[0] });
+    }
+
+    onKeyDown(e) {
+
+        if (this.state.comic) {
+            var dateString = `${this.state.comic.datestring}`;
+            var year = dateString.slice(0, 4);
+            var month = dateString.slice(4, 6);
+            var day = dateString.slice(6, 8);
+            var dateKey = new Date(year, month - 1, day);
+            var prevDateKey = new Date(dateKey.setDate(dateKey.getDate() - 1)).toISOString().slice(0, 10).replace(/-/g, "");
+            var nextDateKey = new Date(dateKey.setDate(dateKey.getDate() + 2)).toISOString().slice(0, 10).replace(/-/g, "");
+            dateKey = new Date(year, month - 1, day);
+            var options = {
+                year: 'numeric', month: 'long', day: 'numeric'
+            };
+            dateKey = dateKey.toLocaleString('en-US', options).toString();
+        }
+
+        if (e.keyCode === 37) {
+            this.props.history.push(`/comics/` + (this.state.comic ? prevDateKey : this.props.match.params.date));
+        } else if (e.keyCode === 39) {
+            this.props.history.push(`/comics/` + (this.state.comic ? nextDateKey : this.props.match.params.date));
+        }
     }
 
     render() {
@@ -43,7 +74,7 @@ class Comic extends React.Component {
                 var date = new Date(year, month - 1, day);
                 var prevDate = new Date(date.setDate(date.getDate() - 1)).toISOString().slice(0, 10).replace(/-/g, "");
                 var nextDate = new Date(date.setDate(date.getDate() + 2)).toISOString().slice(0, 10).replace(/-/g, "");
-                var date = new Date(year, month - 1, day);
+                date = new Date(year, month - 1, day);
                 var options = {
                     year: 'numeric', month: 'long', day: 'numeric'
                 };
@@ -56,14 +87,14 @@ class Comic extends React.Component {
                 <h2 className="comicDate">{date}</h2>
                 
                 {this.state.comic.datestring ?
-                    <a href={"https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" + this.state.comic.datestring + ".jpg"}>
+                    <Link to={'/comics/' + nextDate}>
                         <img
                             title={this.state.comic.desc}
                             alt="comic"
                             src={"https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" + this.state.comic.datestring + ".jpg"}
                             className="comicImage"
                         />
-                    </a>
+                    </Link>
                     :
                     null
                 }
@@ -76,7 +107,6 @@ class Comic extends React.Component {
                     Next
                     </Link>
                 </div>
-                {/* <p className="comicDialog">{this.state.comic.dialog}</p> */}
                 
                 </div>
               </>
