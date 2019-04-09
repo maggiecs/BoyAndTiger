@@ -30,6 +30,7 @@ class MainPage extends React.Component {
     anchorEl: null,
   };
   this.handleCalendarPick = this.handleCalendarPick.bind(this);
+  this.selectArc = this.selectArc.bind(this);
 }
 
   handleCalendarPick = date => {
@@ -49,6 +50,16 @@ class MainPage extends React.Component {
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
+
+  selectArc(e, character) {
+    e.preventDefault();
+    this.props.history.push({
+      pathname: "/results",
+      search: `?query=${character}`
+    });
+
+    
+  }
 
   handleClose = () => {
     this.setState({ anchorEl: null });
@@ -129,13 +140,13 @@ class MainPage extends React.Component {
                         onClose={this.handleClose}
                         TransitionComponent={Fade}
                       >
-                        <MenuItem onClick={this.handleClose}>
+                        <MenuItem onClick={e => this.selectArc(e, "Spaceman Spiff")}>
                           Spaceman Spiff
                         </MenuItem>
-                        <MenuItem onClick={this.handleClose}>
+                        <MenuItem onClick={e => this.selectArc(e, "Stupendous Man")}>
                           Stupendous Man
                         </MenuItem>
-                        <MenuItem onClick={this.handleClose}>
+                        <MenuItem onClick={e => this.selectArc(e, "Tracer Bullet")}>
                           Tracer Bullet
                         </MenuItem>
                       </Menu>
@@ -173,7 +184,7 @@ class MainPage extends React.Component {
                   <div className="people_div">
                     <div className="person1">
                       <img
-                      alt="magatha pic"
+                        alt="magatha pic"
                         src={"about/magatha.png"}
                         className="aboutImg"
                       />
@@ -200,7 +211,7 @@ class MainPage extends React.Component {
 
                     <div className="person2">
                       <img
-                      alt="cameron pic"
+                        alt="cameron pic"
                         src={"about/cameron.jpg"}
                         className="aboutImg"
                       />
@@ -230,7 +241,7 @@ class MainPage extends React.Component {
 
                     <div className="person3">
                       <img
-                      alt="derek pic"
+                        alt="derek pic"
                         src={"about/derek.jpg"}
                         className="aboutImg"
                       />
@@ -259,7 +270,7 @@ class MainPage extends React.Component {
 
                     <div className="person4">
                       <img
-                      alt="gary pic"
+                        alt="gary pic"
                         src={"about/gary.png"}
                         className="aboutImg"
                       />

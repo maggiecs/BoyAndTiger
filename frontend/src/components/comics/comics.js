@@ -13,6 +13,7 @@ class Comic extends React.Component {
 
     componentWillMount() {
         this.props.fetchComics();
+        
     }
 
     componentWillReceiveProps(newState) {

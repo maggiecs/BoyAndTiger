@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 import './navbar.css';
 import './../main/reset.css';
+import SignupModal from './signup_modal';
+import LoginModal from './login_modal';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -28,10 +30,12 @@ class NavBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    // debugger
     this.props.fetchComics(this.state).then(() => {
       this.props.history.push({
         pathname: '/results',
-        search: `?query=${this.state.searchedQuery}`})
+        search: `?query=${
+          this.state.searchedQuery}`})
     });
 
     // this.props.history.push({
@@ -56,20 +60,39 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div>
-          <Link to={'/profile'} className="nav-link">Profile</Link>
-          <br></br>
-          <Link to={'/comics'} className="nav-link">Comics</Link>
-          <br></br>
-          <Link to={'/new_tweet'} className="nav-link">Fan Drawings</Link>
+          <span>
+            <Link to={"/profile"} className="nav-link">
+              Profile
+            </Link>
+          </span>
+
+          {/* <br /> */}
+
+          <span>
+            <Link to={"/comics"} className="nav-link">
+              Comics
+            </Link>
+          </span>
+
+          {/* <br /> */}
+
+          <span>
+            <Link to={"/new_tweet"} className="nav-link">
+              Fan Drawings
+            </Link>
+          </span>
           <button onClick={this.logoutUser}>Logout</button>
         </div>
       );
     } else {
       return (
         <div>
-          <Link to={'/signup'} className="nav-link">Signup</Link>
-          <Link to={'/login'} className="nav-link">Login</Link>
-        </div>
+          {/* <Link to={'/signup'} className="nav-link">Signup</Link>
+          <Link to={'/login'} className="nav-link">Login</Link> */}
+          <span><SignupModal/></span>
+          <span style={{ display: 'inline-block' }} ></span>
+          <span><LoginModal /></span>
+        </div> 
       );
     }
   }
@@ -86,8 +109,9 @@ class NavBar extends React.Component {
               className="nav-search"
               onChange={this.update('searchedQuery')}
               placeholder="Search..."
+              id="search_bar"
             />
-            <button type="submit"><i className="fa fa-search"></i></button>
+            <button type="submit" id="search_button"><i className="fa fa-search"></i></button>
           </form>
           {this.getLinks()}
         </div> 

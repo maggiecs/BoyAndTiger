@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import './comics_search.css';
 import './../main/reset.css';
 
+
+
 class SearchedComics extends React.Component {
     constructor(props) {
         super(props);
@@ -13,7 +15,18 @@ class SearchedComics extends React.Component {
         this.props.fetchComics({ searchedQuery: this.query });
     }
 
+    
+
     render() {
+        // let sectionStyle;
+
+        //     if (this.props.history.location.search === "?query=Spaceman%20Spiff") {
+        //         sectionStyle = {
+        //             backgroundImage: `url("wallpapers/bill.jpg")`,
+        //             backgroundSize: "cover"
+
+        //     }
+        //     else
         let comics = this.props.comics;
         let searchedComics;
 
