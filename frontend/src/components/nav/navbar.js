@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from "react-router";
 import './navbar.css';
 import './../main/reset.css';
 
@@ -8,7 +9,16 @@ class NavBar extends React.Component {
     super(props);
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = { searchedQuery: "" };
+  }
+
+  componentDidMount() {
+    const searchedQuery = new URLSearchParams(this.props.location.search).get('query');
+    
+    if (searchedQuery) {
+      this.setState({ searchedQuery: searchedQuery })
+    };
   }
 
   logoutUser(e) {
@@ -16,17 +26,29 @@ class NavBar extends React.Component {
     this.props.logout();
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.fetchComics(this.state).then(() => {
+      this.props.history.push({
+        pathname: '/results',
+        search: `?query=${this.state.searchedQuery}`})
+    });
+
+    // this.props.history.push({
+    //     pathname: '/results',
+    //     search: `?query=${this.state.searchedQuery}`
+    //   });
+
+    // localStorage.setItem('searchedQuery', JSON.stringify(this.state.searchedQuery));
+
+    // this.setState({ searchedQuery: "" });
+  }
+
   update(field) {
     return e => {
       this.setState({
         [field]: e.currentTarget.value
       });
-
-      // if (e.currentTarget.value !== "") {
-      //   this.props.fetchSearchedComics(e.currentTarget.value);
-      // } else {
-      //   this.props.receiveNullComics();
-      // }
     };
   }
 
@@ -52,18 +74,21 @@ class NavBar extends React.Component {
     }
   }
 
+
   render() {
     return (
       <div>
         <div className="nav-search-container" >
-        <h1>Boy and Tiger</h1>
-          <input type="text"
-            value={this.state.searchedQuery}
-            className="nav-search"
-            onChange={this.update('searchedQuery')}
-            placeholder="Search..."
-          />
-          <button type="submit"><i className="fa fa-search"></i></button>
+          <Link to={'/'} className="nav-link">Boy and Tiger</Link>
+          <form className="nav-search-form" onSubmit={this.handleSubmit.bind(this)}>
+            <input type="text"
+              value={this.state.searchedQuery}
+              className="nav-search"
+              onChange={this.update('searchedQuery')}
+              placeholder="Search..."
+            />
+            <button type="submit"><i className="fa fa-search"></i></button>
+          </form>
           {this.getLinks()}
         </div> 
        
@@ -72,4 +97,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

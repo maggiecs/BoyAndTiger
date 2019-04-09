@@ -25,6 +25,8 @@
     "mongoose": "^5.4.19",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "query": "^0.2.0",
+    "query-string": "^6.4.2",
     "react-datepicker": "^2.3.0",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
