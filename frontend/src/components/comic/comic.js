@@ -30,22 +30,22 @@ class Comic extends React.Component {
 
     render() {
 
-        if (this.state.comic.date) {
-        var dateString = `${this.state.comic.date}`;
-        var year = dateString.slice(0, 4);
-        var month = dateString.slice(4, 6);
-        var day = dateString.slice(6, 8);
-        var date = new Date(year, month - 1, day);
-        var options = {
-            year: 'numeric', month: 'long', day: 'numeric'
-        };
-        date = date.toLocaleString('en-US', options).toString();
-    }
-
 
         if (!this.state.comic) {
             return (<div>Hang tight...</div>)
         } else {
+            if (this.state.comic.date) {
+                var dateString = `${this.state.comic.date}`;
+                var year = dateString.slice(0, 4);
+                var month = dateString.slice(4, 6);
+                var day = dateString.slice(6, 8);
+                var date = new Date(year, month - 1, day);
+                var options = {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                };
+                date = date.toLocaleString('en-US', options).toString();
+            }
+
             return (
               <>
                 <div className="comicWrapper">
@@ -53,7 +53,7 @@ class Comic extends React.Component {
                 
                 <img
                     alt="comic"
-                    src={"https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" + this.state.comic.date + ".jpg"}
+                    src={"https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" + this.state.comic.datestring + ".jpg"}
                     className="comicImage"
                 />
                 

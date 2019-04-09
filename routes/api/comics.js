@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 
 
 router.get('/:date', (req, res) => {
-    Comic.find( {date: req.params.date } )
+    Comic.find( { datestring: parseInt(req.params.date) } )
         .then(comic => res.json(comic))
         .catch(err =>
             res.status(404).json({ nocomicfound: 'No comic found with that date' })
