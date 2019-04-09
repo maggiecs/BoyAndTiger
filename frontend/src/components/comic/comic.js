@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "./comic.css";
 
 
@@ -34,11 +35,14 @@ class Comic extends React.Component {
         if (!this.state.comic) {
             return (<div>Hang tight...</div>)
         } else {
-            if (this.state.comic.date) {
-                var dateString = `${this.state.comic.date}`;
+            if (this.state.comic.datestring) {
+                var dateString = `${this.state.comic.datestring}`;
                 var year = dateString.slice(0, 4);
                 var month = dateString.slice(4, 6);
                 var day = dateString.slice(6, 8);
+                var date = new Date(year, month - 1, day);
+                var prevDate = new Date(date.setDate(date.getDate() - 1)).toISOString().slice(0, 10).replace(/-/g, "");
+                var nextDate = new Date(date.setDate(date.getDate() + 2)).toISOString().slice(0, 10).replace(/-/g, "");
                 var date = new Date(year, month - 1, day);
                 var options = {
                     year: 'numeric', month: 'long', day: 'numeric'
@@ -52,16 +56,26 @@ class Comic extends React.Component {
                 <h2 className="comicDate">{date}</h2>
                 
                 {this.state.comic.datestring ?
-                    <img
-                        alt="comic"
-                        src={"https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" + this.state.comic.datestring + ".jpg"}
-                        className="comicImage"
-                    />
+                    <a href={"https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" + this.state.comic.datestring + ".jpg"}>
+                        <img
+                            title={this.state.comic.desc}
+                            alt="comic"
+                            src={"https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" + this.state.comic.datestring + ".jpg"}
+                            className="comicImage"
+                        />
+                    </a>
                     :
                     null
                 }
                 
-                <div className="comicControls"></div>
+                <div className="comicControls">
+                    <Link to={'/comics/' + prevDate}>
+                    Previous
+                    </Link>
+                    <Link to={'/comics/' + nextDate}>
+                    Next
+                    </Link>
+                </div>
                 {/* <p className="comicDialog">{this.state.comic.dialog}</p> */}
                 
                 </div>
