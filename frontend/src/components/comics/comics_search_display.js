@@ -21,8 +21,8 @@ class SearchedComics extends React.Component {
             return (
                 <div key={comic._id} className="comic-item">
                     <div className="comic-image">
-                        <Link to={'/comics/' + comic.date}><img
-                            src={"images/" + comic.date + ".gif"}
+                        <Link to={'/comics/' + comic.datestring}><img
+                            src={"images/" + comic.datestring + ".gif"}
                             className="comic-thumbnail"
                         /></Link>
                     </div>
