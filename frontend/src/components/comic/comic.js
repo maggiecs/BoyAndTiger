@@ -16,6 +16,13 @@ class Comic extends React.Component {
         this.props.fetchComic(this.props.match.params.date);
     }
 
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.date !== this.props.match.params.date) {
+            this.props.fetchComic(this.props.match.params.date);
+        }
+    }
+
     componentWillReceiveProps(newState) {
         // A comic comes in as an array of one element.
         this.setState({ comic: newState.comic[0] });
