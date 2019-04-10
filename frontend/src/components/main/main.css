@@ -41,7 +41,11 @@ font-size: 50px; */
 
 .splashPageImage {
    position: relative; 
-   width: 75%;
+   /* width: 75%; */
+   min-height: 40%;
+   max-height: 55%;
+   width: auto;
+   max-width: 80%;
    left: 50%;
    transform: translateX(-50%);
    padding-bottom: 25px;
@@ -51,7 +55,7 @@ font-size: 50px; */
    display: flex;
    width: 700px;
    font-size: 50px;
-   background-color: blue;
+   /* background-color: blue; */
    align-items: center;
   text-align: center;
    justify-content: space-between;
@@ -79,11 +83,14 @@ font-size: 50px; */
    position: absolute;
    text-align: center;
    bottom: 0%;
-   height: 4%;
+   height: 5%;
    width: 100%;
-   background-color: purple;
+   background-color: #00cf35;
 
-   
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+   color: white;   
+
 	border: none;
 	padding: 0;
 	font: inherit;
@@ -183,4 +190,25 @@ font-size: 50px; */
    text-shadow: 2px 2px black;
    margin: auto;
    width: 60%;
+}
+
+.fa-random {
+   color: black;
+   
+   background-color: white;
+   /* mix-blend-mode: difference; */
+    padding:15px;
+    border-radius: 50%;
+}
+
+.calendar {
+  text-shadow:
+    -2px -2px 0 #000,  
+     2px -2px 0 #000,
+    -2px  2px 0 #000,
+     2px  2px 0 #000;
+
+
+ 
+  color: white;
 }
