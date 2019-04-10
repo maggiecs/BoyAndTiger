@@ -7,7 +7,7 @@
 
 .comicImage {
    padding-top: 3%;
-   width: 50%;
+   width: 75%;
    margin: 0 auto;
 }
 
@@ -15,10 +15,11 @@
    display: flex;
    justify-content: space-around;
    align-items: center;
-   background-color: blue;
+   /* background-color: blue; */
    width: 50%;
    height: 100px;
    margin: auto;
+   font-size: 75px;
 }
 
 .comicDialog {
