@@ -36,6 +36,18 @@ class Comic extends React.Component {
         this.setState({ comic: newState.comic[0] });
     }
 
+    randomDate(e) {
+        e.preventDefault();
+        let yyyy = Math.floor(Math.random() * 9) + 1986;
+        let mm = Math.floor(Math.random() * 10) + 1;
+        let dd = Math.floor(Math.random() * 26) + 1;
+        mm = (mm > 9 ? "" : "0") + mm;
+        dd = (dd > 9 ? "" : "0") + dd;
+        let fullDate = yyyy + mm + dd;
+        this.props.history.push(`/comics/${fullDate}`);
+    }
+
+
     onKeyDown(e) {
 
         if (this.state.comic) {
@@ -102,6 +114,12 @@ class Comic extends React.Component {
                 <div className="comicControls">
                     <Link to={'/comics/' + prevDate}>
                                 <i class="fas fa-caret-left"></i>                    </Link>
+
+                            <div>
+                                <button onClick={e => this.randomDate(e)}>
+                                    <i className="fas fa-random" />
+                                </button>
+                            </div>
                     <Link to={'/comics/' + nextDate}>
                                 <i class="fas fa-caret-right"></i>
                     </Link>

@@ -42,9 +42,18 @@ class MainPage extends React.Component {
     mm = (mm > 9 ? "" : "0") + mm;
     dd = (dd > 9 ? "" : "0") + dd; 
     let fullDate = yyyy + mm + dd;
-    console.log (fullDate);
     return fullDate;
+  }
 
+  randomDate(e) {
+    e.preventDefault();
+    let yyyy = Math.floor(Math.random() * 9) + 1986;
+    let mm = Math.floor(Math.random() * 10) + 1;
+    let dd = Math.floor(Math.random() * 26) + 1;
+    mm = (mm > 9 ? "" : "0") + mm;
+    dd = (dd > 9 ? "" : "0") + dd; 
+    let fullDate = yyyy + mm + dd;
+    this.props.history.push(`/comics/${fullDate}`);    
   }
 
   handleCalendarPick = date => {
@@ -115,22 +124,30 @@ class MainPage extends React.Component {
                     className="splashPageImage"
                     alt="todays comic"
                     src={
-                      "https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" + todayDate +".jpg"
+                      "https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" +
+                      todayDate +
+                      ".jpg"
                     }
                   />
 
                   <div className="main_page_nav">
                     {/* buttons go here */}
 
-                    <div>
-                      <i className="fas fa-random" />
+                    <div className="randomWrapper">
+
+                      <button onClick={e => this.randomDate(e)}>
+                        <i className="fas fa-random" />
+
+                      </button>
                     </div>
 
                     <div className="main_page_calendar">
                       <DatePicker
                         // inline
-                        value="click here"
+                        // <i class="fas fa-calendar-alt" />
+                        value={"click here"}
                         selected={this.date1}
+                        className="calendar"
                         selectsStart
                         minDate={this.date1}
                         maxDate={this.date2}
@@ -185,7 +202,9 @@ class MainPage extends React.Component {
                     href="https://github.com/maggiecs/BoyAndTiger"
                     className="boy_tiger_github"
                   >
-                    <i className="fab fa-github" />
+                    <i className="fab fa-github" style={{ backgroundColor: "white", padding: "2px", borderRadius: "50%" }} />
+
+                   
                   </a>
 
                   <div className="next_section_button">
@@ -193,7 +212,7 @@ class MainPage extends React.Component {
                       className="main_page_scroll_down"
                       onClick={() => fullpageApi.moveSectionDown()}
                     >
-                      Move down
+                      About Us
                     </button>
                   </div>
                 </div>
@@ -207,7 +226,7 @@ class MainPage extends React.Component {
                     backgroundSize: "cover"
                   }}
                 >
-                  <h1 className="about_us"> About Us</h1>
+                  {/* <h1 className="about_us"> About Us</h1> */}
 
                   <div className="people_div">
                     <div className="person1">
