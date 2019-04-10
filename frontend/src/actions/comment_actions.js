@@ -1,4 +1,4 @@
-import * as CommentUtil from '../util/comment_api_util';
+import * as CommentAPIUtil from '../util/comment_api_util';
 
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
@@ -20,31 +20,31 @@ export const removeComment = commentId => ({
 });
 
 export const fetchComments = date => dispatch => (
-  CommentUtil.getComments(date)
+  CommentAPIUtil.getComments(date)
     .then(comments => dispatch(receiveComments(comments)))
     .catch(err => console.log(err))
 );
 
 export const fetchComment = (date, commentId) => dispatch => (
-  CommentUtil.getComment(date, commentId)
+  CommentAPIUtil.getComment(date, commentId)
     .then(comment => dispatch(receiveComment(comment)))
     .catch(err => console.log(err))
 );
 
 export const createComment = (date, data) => dispatch => (
-  CommentUtil.createComment(date, data)
+  CommentAPIUtil.createComment(date, data)
     .then(comment => dispatch(receiveComment(comment)))
     .catch(err => console.log(err))
 );
 
 export const editComment = (date, data) => dispatch => (
-  CommentUtil.editComment(date, data)
+  CommentAPIUtil.editComment(date, data)
     .then(comment => dispatch(receiveComment(comment)))
     .catch(err => console.log(err))
 );
 
 export const deleteComment = (date, data) => dispatch => (
-  CommentUtil.deleteComment(date, data)
+  CommentAPIUtil.deleteComment(date, data)
     .then(comment => dispatch(removeComment(comment)))
     .catch(err => console.log(err))
 );

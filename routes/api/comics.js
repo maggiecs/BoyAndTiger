@@ -20,14 +20,14 @@ router.get('/:date', (req, res) => {
         );
 });
 
-router.get('/:date/comments', (req, res, next) => {
+router.get('/:date/comments', (req, res) => {
     Comment.find({ comicDate: req.params.date })
         .sort({ date: 1 })
         .then(comments => res.json(comments))
         .catch(err => res.status(404).json({ nocommentsfound: 'No comments found' }));
 });
 
-router.get('/:date/comments/:comment', (req, res, next) => {
+router.get('/:date/comments/:comment', (req, res) => {
     Comment.findOne({ comicDate: req.params.date })
         .then(comments => res.json(comments))
         .catch(err => res.status(404).json({ nocommentsfound: 'No comment found' }));
@@ -62,7 +62,7 @@ router.param('comment', function (req, res, next, id) {
     }).catch(next);
 });
 
-router.patch('/:date/comments/:comment', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+router.patch('/:date/comments/:comment', passport.authenticate('jwt', { session: false }), (req, res) => {
     if (req.comment.user && req.comment.user._id.toString() === req.user._id.toString()) {
         let comment = req.comment;
         comment.text = req.body.text;
@@ -73,7 +73,7 @@ router.patch('/:date/comments/:comment', passport.authenticate('jwt', { session:
     }
 })
 
-router.delete('/:date/comments/:comment', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+router.delete('/:date/comments/:comment', passport.authenticate('jwt', { session: false }), (req, res) => {
     if (req.comment.user && req.comment.user._id.toString() === req.user._id.toString()) {
         Comic.findOne({ date: req.params.date })
             .then(comic => {
