@@ -47,13 +47,16 @@ class MainPage extends React.Component {
 
   randomDate(e) {
     e.preventDefault();
-    let yyyy = Math.floor(Math.random() * 9) + 1986;
-    let mm = Math.floor(Math.random() * 10) + 1;
-    let dd = Math.floor(Math.random() * 26) + 1;
+    let from = new Date(1985,11,18);
+    let to = new Date(1995,12,31);
+    var date = new Date(+from + Math.random() * (to - from));
+    let yyyy = date.getFullYear();
+    let mm = date.getMonth()+1;
+    let dd = date.getDate();
     mm = (mm > 9 ? "" : "0") + mm;
-    dd = (dd > 9 ? "" : "0") + dd; 
+    dd = (dd > 9 ? "" : "0") + dd;
     let fullDate = yyyy + mm + dd;
-    this.props.history.push(`/comics/${fullDate}`);    
+    this.props.history.push(`/comics/${fullDate}`); 
   }
 
   handleCalendarPick = date => {

@@ -113,7 +113,7 @@ class Comic extends React.Component {
                 
                 <div className="comicControls">
                     <Link to={'/comics/' + prevDate}>
-                                <i class="fas fa-caret-left"></i>                    </Link>
+                                <i className="fas fa-caret-left"></i>                    </Link>
 
                             <div>
                                 <button onClick={e => this.randomDate(e)}>
@@ -121,7 +121,7 @@ class Comic extends React.Component {
                                 </button>
                             </div>
                     <Link to={'/comics/' + nextDate}>
-                                <i class="fas fa-caret-right"></i>
+                                <i className="fas fa-caret-right"></i>
                     </Link>
                 </div>
                 
