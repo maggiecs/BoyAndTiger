@@ -101,10 +101,9 @@ class Comic extends React.Component {
                 
                 <div className="comicControls">
                     <Link to={'/comics/' + prevDate}>
-                    Previous
-                    </Link>
+                                <i class="fas fa-caret-left"></i>                    </Link>
                     <Link to={'/comics/' + nextDate}>
-                    Next
+                                <i class="fas fa-caret-right"></i>
                     </Link>
                 </div>
                 

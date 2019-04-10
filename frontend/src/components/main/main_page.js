@@ -33,6 +33,20 @@ class MainPage extends React.Component {
   this.selectArc = this.selectArc.bind(this);
 }
 
+  parseTodayDate() {
+    let today =   new Date();
+    // 1986 -> 1994 years for yyyy
+    let yyyy = Math.floor(Math.random() * 9) + 1986;
+    let mm = today.getMonth() + 1;
+    let dd = today.getDate();
+    mm = (mm > 9 ? "" : "0") + mm;
+    dd = (dd > 9 ? "" : "0") + dd; 
+    let fullDate = yyyy + mm + dd;
+    console.log (fullDate);
+    return fullDate;
+
+  }
+
   handleCalendarPick = date => {
   
     let yyyy = date.getFullYear();
@@ -41,7 +55,7 @@ class MainPage extends React.Component {
     mm = ((mm > 9 ? '' : '0') + mm);
     dd = ((dd > 9 ? '' : '0') + dd); 
     let fullDate = yyyy + mm + dd;
-    console.log(fullDate)
+    // console.log(fullDate)
     // redirect to fullDate.img
     // browserHistory.push(`/comics/${fullDate}`);
     this.props.history.push(`/comics/${fullDate}`);    
@@ -71,7 +85,7 @@ class MainPage extends React.Component {
   date2 = new Date(1995,12,31);
 
   render() {
-    
+    let todayDate = this.parseTodayDate();
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
     
@@ -100,7 +114,9 @@ class MainPage extends React.Component {
                   <img
                     className="splashPageImage"
                     alt="todays comic"
-                    src="https://i.imgur.com/6KVgfoT.gif"
+                    src={
+                      "https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" + todayDate +".jpg"
+                    }
                   />
 
                   <div className="main_page_nav">
@@ -140,13 +156,25 @@ class MainPage extends React.Component {
                         onClose={this.handleClose}
                         TransitionComponent={Fade}
                       >
-                        <MenuItem onClick={e => this.selectArc(e, "Spaceman Spiff")}>
+                        <MenuItem
+                          onClick={e =>
+                            this.selectArc(e, "Spaceman Spiff")
+                          }
+                        >
                           Spaceman Spiff
                         </MenuItem>
-                        <MenuItem onClick={e => this.selectArc(e, "Stupendous Man")}>
+                        <MenuItem
+                          onClick={e =>
+                            this.selectArc(e, "Stupendous Man")
+                          }
+                        >
                           Stupendous Man
                         </MenuItem>
-                        <MenuItem onClick={e => this.selectArc(e, "Tracer Bullet")}>
+                        <MenuItem
+                          onClick={e =>
+                            this.selectArc(e, "Tracer Bullet")
+                          }
+                        >
                           Tracer Bullet
                         </MenuItem>
                       </Menu>

@@ -41,7 +41,11 @@ font-size: 50px; */
 
 .splashPageImage {
    position: relative; 
-   width: 75%;
+   /* width: 75%; */
+   min-height: 40%;
+   max-height: 60%;
+   width: auto;
+   max-width: 80%;
    left: 50%;
    transform: translateX(-50%);
    padding-bottom: 25px;
