@@ -57,8 +57,8 @@ class MainPage extends React.Component {
       pathname: "/results",
       search: `?query=${character}`
     });
+    window.location.reload();
 
-    
   }
 
   handleClose = () => {
