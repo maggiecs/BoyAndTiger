@@ -229,7 +229,7 @@ class MainPage extends React.Component {
                     backgroundSize: "cover"
                   }}
                 >
-                  {/* <h1 className="about_us"> About Us</h1> */}
+                  <h1 className="about_us"> About Us</h1>
 
                   <div className="people_div">
                     <div className="person1">
@@ -238,7 +238,7 @@ class MainPage extends React.Component {
                         src={"about/magatha.png"}
                         className="aboutImg"
                       />
-                      <p>
+                      <p className="aboutParagraph">
                         Maggie has always enjoyed reading the Comics
                         section whenever she grabbed a newspaper.
                         She thought Calvin and Hobbes was one of the
@@ -266,7 +266,7 @@ class MainPage extends React.Component {
                         className="aboutImg"
                       />
 
-                      <p>
+                      <p className="aboutParagraph">
                         Cameron fully intends on reading The
                         Complete Calvin and Hobbes that is sitting
                         on his bookshelf. It’ll happen one day! He
@@ -296,7 +296,7 @@ class MainPage extends React.Component {
                         className="aboutImg"
                       />
 
-                      <p>
+                      <p className="aboutParagraph"> 
                         Derek loved Calvin and Hobbes growing up,
                         and read all of the books cover to cover
                         multiple times. He's a big fan of the
@@ -325,7 +325,7 @@ class MainPage extends React.Component {
                         className="aboutImg"
                       />
 
-                      <p>
+                      <p className="aboutParagraph">
                         Gary grew up with heaps of Calvin and Hobbes
                         treasuries. He was obsessed with collecting
                         them- from the essential to the
@@ -357,7 +357,7 @@ class MainPage extends React.Component {
                     backgroundSize: "cover"
                   }}
                 >
-                  <h1 className="about_bill">Bill?</h1>
+                  <h1 className="about_bill">Bill Watterson</h1>
 
                   <div className="bill_blurb">
                     <p>

@@ -133,7 +133,7 @@ class LoginModal extends React.Component {
             color="primary"
             onClick={this.handleClickOpen}
           >
-            <span style={{cursor: 'pointer'}}>Log In</span>
+               <span className="nav-link" style={{cursor: 'pointer'}}>Log In</span>
           </div>
           <Dialog
             open={this.state.open}
