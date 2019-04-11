@@ -81,7 +81,7 @@ class NavBar extends React.Component {
               Fan Drawings
             </Link>
           </span>
-          <button onClick={this.logoutUser}>Logout</button>
+          <button className="nav-link" onClick={this.logoutUser}>Logout</button>
         </div>
       );
     } else {
