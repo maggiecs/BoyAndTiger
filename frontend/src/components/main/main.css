@@ -100,93 +100,135 @@ font-size: 50px; */
 }
 
 .about_us {
+   text-align: center;
+   font-size: 40px;
    color: black;
+   font-weight: bold;
+   font-family: 'Indie Flower', cursive;
+   /* color: black;
    position: absolute;
    top: 3%;
-   left: 45%;
-   
+   left: 45%; */
 }
 
 .people_div {
    border-radius: 10px;
-   /* background-color: orange; */
-   background: rgba(255, 255, 255, 0.9); 
-   width: 80%;
+   background: rgba(241, 189, 54, 0.9); 
+   width: 88%;
    height: auto;
-  display: flex;
-  justify-content: center;
+   display: flex;
+   justify-content: center;
    margin: auto;
-   justify-content: space-evenly;
+   margin-top: 10px;
+   /* justify-content: space-evenly; */
+   position: relative;
 
 }
+
 
 .personal_sites_wrapper {
    border-radius: 10px;
    font-size: 50px;
    display: flex;
-  justify-content: center;
-  position: relative;
+   justify-content: center;
+   align-items: center;
+   position: absolute; 
    bottom: 0px;
+   font-size: 30px;
+   width: 22%;
+   margin-bottom: 15px;
+
 }
 
 .fa-github {
    color: black;
+   padding: 5px;
 }
 
 .fa-linkedin {
    color: #0076b5;
+   padding: 5px;
 }
 
 .fa-user-circle {
    color: orangered;
+   padding: 5px;
 }
 
+.aboutParagraph {
+   display: block;
+   padding-bottom: 50px;
+}
 .aboutImg {
   object-fit: cover;
-
-   width: 100%;
-   height: 300px;
-   
+  width: 100%;
+  height: 300px;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
 .person1 {
    border-radius: 10px;
    width: 25%;
    height: 100%;
+   margin: 20px 20px;
+   text-align: center;
+   box-sizing: border-box;
+   /* display: flex;
+   flex-direction: column;
+   justify-content: space-between; */
    /* background-color: gray; */
 }
 .person2 {
    width: 25%;
    height: 100%;
+   margin: 20px 10px;
+   text-align: center;
+   box-sizing: border-box;
+   /* display: flex;
+   flex-direction: column;
+   justify-content: space-between; */
    /* background-color: green; */
 }
 .person3 {
    width: 25%;
    height: 100%;
+   margin: 20px 10px;
+   text-align: center;
+   box-sizing: border-box;
+   /* display: flex;
+   flex-direction: column;
+   justify-content: space-between; */
    /* background-color: blue; */
 }
 .person4 {
    border-radius: 10px;
    width: 25%;
    height: 100%;
+   margin: 20px 20px;
+   text-align: center;
+   box-sizing: border-box;
+   /* display: flex;
+   flex-direction: column;
+   justify-content: space-between; */
    /* background-color: red; */
 }
 
 
 
 .about_bill {
-   position: absolute;
-   top: 5%;
-   left: 45%;
+   text-align: center;
    color: white;
    font-size: 50px;
-      text-shadow: 2px 2px black;
+   text-shadow: 2px 2px black;
+   padding: 10px;
 
 }
 
 .bill_blurb {
    font-size: 25px;
    color: white;
+   text-align: center;
    text-shadow: 2px 2px black;
    margin: auto;
    width: 60%;
