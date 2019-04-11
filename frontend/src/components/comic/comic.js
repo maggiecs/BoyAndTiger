@@ -66,9 +66,9 @@ class Comic extends React.Component {
         }
 
         if (e.keyCode === 37) {
-            this.props.history.push(`/comics/` + (this.state.comic ? prevDateKey : this.props.match.params.date));
+            this.props.history.push(`/comics/` + prevDateKey);
         } else if (e.keyCode === 39) {
-            this.props.history.push(`/comics/` + (this.state.comic ? nextDateKey : this.props.match.params.date));
+            this.props.history.push(`/comics/` + nextDateKey);
         }
     }
 
