@@ -2,13 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './comics_search.css';
 import './../main/reset.css';
-import { NONAME } from 'dns';
-
 
 
 class SearchedComics extends React.Component {
     constructor(props) {
         super(props);
+        this.getSearchedComics = this.getSearchedComics.bind(this);
         this.query = new URLSearchParams(this.props.location.search).get('query');
     }
 
@@ -16,7 +15,37 @@ class SearchedComics extends React.Component {
         this.props.fetchComics({ searchedQuery: this.query });
     }
 
-    
+    getSearchedComics() {
+        let comics = this.props.comics;
+        let searchedComics;
+
+        if (comics.length > 0) {
+            searchedComics = comics.map(comic => {
+                return (
+                    <div key={comic._id} className="comic-item">
+                        <div className="comic-image">
+                            <Link to={'/comics/' + comic.datestring}><img
+                                src={"images/" + comic.datestring + ".gif"}
+                                alt={comic.datestring}
+                                className="comic-thumbnail"
+                            /></Link>
+                        </div>
+                        <div className="comic-dialogue">
+                            <p>{comic.dialog}</p>
+                        </div>
+                    </div>
+                )
+            });
+            return searchedComics;
+        } else {
+            return (
+                <div>
+                    <h2>No results found</h2>
+                    <p>Try different keywords</p>
+                </div>
+            );
+        }
+    }
 
     render() {
         // let sectionStyle;
@@ -28,31 +57,13 @@ class SearchedComics extends React.Component {
 
         //     }
         //     else
-        let comics = this.props.comics;
-        let searchedComics;
-
-        searchedComics = comics.map(comic => {
-            return (
-                <div key={comic._id} className="comic-item">
-                    <div className="comic-image">
-                        <Link to={'/comics/' + comic.datestring}><img
-                            src={"images/" + comic.datestring + ".gif"}
-                            alt={comic.datestring}
-                            className="comic-thumbnail"
-                        /></Link>
-                    </div>
-                    <div className="comic-dialogue">
-                        <p>{comic.dialog}</p>
-                    </div>
-                </div>
-            )
-        });
+       
 
         
 
         return (
             <div className="comics-container" style={{ backgroundSize: "auto"}}>
-                {searchedComics}
+                {this.getSearchedComics()}
             </div>
         );
     }
