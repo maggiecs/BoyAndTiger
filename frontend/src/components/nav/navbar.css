@@ -9,11 +9,17 @@
   box-sizing: border-box;
 }
 
+.nav-search {
+  width: 200%;
+}
+
 .nav-link {
   padding: 0px 10px;
 }
 
 .nav-search-form {
+  display: flex;
+  width: 40%;
   position: absolute;
   left: 30%;
 }
