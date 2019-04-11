@@ -28,7 +28,10 @@ class Comic extends React.Component {
 
     componentDidMount() {
         document.addEventListener("keydown", this.onKeyDown, false);
-        
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener("keydown", this.onKeyDown, false);
     }
 
     componentWillReceiveProps(newState) {
@@ -50,25 +53,23 @@ class Comic extends React.Component {
 
     onKeyDown(e) {
 
-        if (this.state.comic) {
-            var dateString = `${this.state.comic.datestring}`;
-            var year = dateString.slice(0, 4);
-            var month = dateString.slice(4, 6);
-            var day = dateString.slice(6, 8);
-            var dateKey = new Date(year, month - 1, day);
-            var prevDateKey = new Date(dateKey.setDate(dateKey.getDate() - 1)).toISOString().slice(0, 10).replace(/-/g, "");
-            var nextDateKey = new Date(dateKey.setDate(dateKey.getDate() + 2)).toISOString().slice(0, 10).replace(/-/g, "");
-            dateKey = new Date(year, month - 1, day);
-            var options = {
-                year: 'numeric', month: 'long', day: 'numeric'
-            };
-            dateKey = dateKey.toLocaleString('en-US', options).toString();
-        }
+        var dateString = `${this.state.comic.datestring}`;
+        var year = dateString.slice(0, 4);
+        var month = dateString.slice(4, 6);
+        var day = dateString.slice(6, 8);
+        var dateKey = new Date(year, month - 1, day);
+        var prevDateKey = new Date(dateKey.setDate(dateKey.getDate() - 1)).toISOString().slice(0, 10).replace(/-/g, "");
+        var nextDateKey = new Date(dateKey.setDate(dateKey.getDate() + 2)).toISOString().slice(0, 10).replace(/-/g, "");
+        dateKey = new Date(year, month - 1, day);
+        var options = {
+            year: 'numeric', month: 'long', day: 'numeric'
+        };
+        dateKey = dateKey.toLocaleString('en-US', options).toString();
 
         if (e.keyCode === 37) {
-            this.props.history.push(`/comics/` + (this.state.comic ? prevDateKey : this.props.match.params.date));
+            this.props.history.push(`/comics/` + prevDateKey);
         } else if (e.keyCode === 39) {
-            this.props.history.push(`/comics/` + (this.state.comic ? nextDateKey : this.props.match.params.date));
+            this.props.history.push(`/comics/` + nextDateKey);
         }
     }
 
