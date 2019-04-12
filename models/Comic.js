@@ -17,13 +17,10 @@ const ComicSchema = new Schema({
     dialog: {
         type: String,
     },
-<<<<<<< HEAD
-    comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
-=======
     desc: {
         type: String,
     },
->>>>>>> master
+    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
 });
 
 module.exports = Comic = mongoose.model('comic', ComicSchema);
