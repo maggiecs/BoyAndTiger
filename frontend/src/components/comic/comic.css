@@ -1,0 +1,33 @@
+.comicWrapper {
+  position: relative;
+  text-align: center;
+  top: 50%;
+
+}
+
+.comicImage {
+   padding-top: 3%;
+   width: 75%;
+   margin: 0 auto;
+}
+
+.comicControls {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   /* background-color: blue; */
+   width: 50%;
+   height: 100px;
+   margin: auto;
+   font-size: 75px;
+}
+
+.comicDialog {
+   padding-top: 5%;
+   width: 40%;
+   margin: auto;
+}
+
+.comicDate {
+   padding-top: 5%;
+}

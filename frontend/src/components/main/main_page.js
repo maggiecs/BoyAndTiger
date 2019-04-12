@@ -9,7 +9,7 @@ import Fade from "@material-ui/core/Fade";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import color from '@material-ui/core/colors/lightGreen';
+
 
 // class MySection extends React.Component {
    
@@ -23,56 +23,142 @@ import color from '@material-ui/core/colors/lightGreen';
 // }
 
 class MainPage extends React.Component {
-  
-  state = {
+
+  constructor(props) {
+    super(props);
+  this.state = {
     anchorEl: null,
+  };
+  this.handleCalendarPick = this.handleCalendarPick.bind(this);
+  this.selectArc = this.selectArc.bind(this);
+}
+
+  parseTodayDate() {
+    let today =   new Date();
+    // 1986 -> 1994 years for yyyy
+    let yyyy = Math.floor(Math.random() * 9) + 1986;
+    let mm = today.getMonth() + 1;
+    let dd = today.getDate();
+    mm = (mm > 9 ? "" : "0") + mm;
+    dd = (dd > 9 ? "" : "0") + dd; 
+    let fullDate = yyyy + mm + dd;
+    return fullDate;
+  }
+
+  randomDate(e) {
+    e.preventDefault();
+    let from = new Date(1985,11,18);
+    let to = new Date(1995,12,31);
+    var date = new Date(+from + Math.random() * (to - from));
+    let yyyy = date.getFullYear();
+    let mm = date.getMonth()+1;
+    let dd = date.getDate();
+    mm = (mm > 9 ? "" : "0") + mm;
+    dd = (dd > 9 ? "" : "0") + dd;
+    let fullDate = yyyy + mm + dd;
+    this.props.history.push(`/comics/${fullDate}`); 
+  }
+
+  handleCalendarPick = date => {
+  
+    let yyyy = date.getFullYear();
+    let mm = date.getMonth() + 1;
+    let dd = date.getDate();
+    mm = ((mm > 9 ? '' : '0') + mm);
+    dd = ((dd > 9 ? '' : '0') + dd); 
+    let fullDate = yyyy + mm + dd;
+    // console.log(fullDate)
+    // redirect to fullDate.img
+    // browserHistory.push(`/comics/${fullDate}`);
+    this.props.history.push(`/comics/${fullDate}`);    
   };
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
+  selectArc(e, character) {
+    e.preventDefault();
+    this.props.history.push({
+      pathname: "/results",
+      search: `?query=${character}`
+    });
+    window.location.reload();
+
+  }
+
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
 
-
+  rand1 = Math.floor(Math.random() * 7) + 1;
+  rand2 = Math.floor(Math.random() * 7) + 1;
+  date1 = new Date(1985,11,18);
+  date2 = new Date(1995,12,31);
 
   render() {
+    let todayDate = this.parseTodayDate();
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
-
-
-
+    
     return (
       <div>
-
         <ReactFullpage
           navigation
           controlArrows="true"
-          sectionsColor={["#00cf35", "#7c5cff", "#001935", "#001935"]}
+          // sectionsColor={["#00cf35", "#7c5cff", "#001935", "#001935"]}
           navigationPosition="left"
           slidesNavigation="true"
           render={({ fullpageApi }) => {
             return (
               <div id="fullpage-wrapper">
-                <div className="section section1">
-
+                <div
+                  className="section section1"
+                  style={{
+                    backgroundImage: `url("wallpapers/wallpaper${
+                      this.rand2
+                    }.jpg")`,
+                    backgroundSize: "cover"
+                  }}
+                >
                   <h1 className="logo">Boy and Tiger</h1>
 
                   <img
                     className="splashPageImage"
                     alt="todays comic"
-                    src="https://i.imgur.com/6KVgfoT.gif"
+                    src={
+                      "https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" +
+                      todayDate +
+                      ".jpg"
+                    }
                   />
 
                   <div className="main_page_nav">
                     {/* buttons go here */}
 
-                    <div>
-                      <i className="fas fa-random" />
+                    <div className="randomWrapper">
+
+                      <button onClick={e => this.randomDate(e)}>
+                        <i className="fas fa-random" />
+
+                      </button>
                     </div>
-                    <div className="main_page_calendar" />
+
+                    <div className="main_page_calendar">
+                      <DatePicker
+                        // inline
+                        // <i class="fas fa-calendar-alt" />
+                        value={"click here"}
+                        selected={this.date1}
+                        className="calendar"
+                        selectsStart
+                        minDate={this.date1}
+                        maxDate={this.date2}
+                        onChange={event =>
+                          this.handleCalendarPick(event)
+                        }
+                      />
+                    </div>
 
                     <div>
                       <Button
@@ -90,13 +176,25 @@ class MainPage extends React.Component {
                         onClose={this.handleClose}
                         TransitionComponent={Fade}
                       >
-                        <MenuItem onClick={this.handleClose}>
+                        <MenuItem
+                          onClick={e =>
+                            this.selectArc(e, "Spaceman Spiff")
+                          }
+                        >
                           Spaceman Spiff
                         </MenuItem>
-                        <MenuItem onClick={this.handleClose}>
+                        <MenuItem
+                          onClick={e =>
+                            this.selectArc(e, "Stupendous Man")
+                          }
+                        >
                           Stupendous Man
                         </MenuItem>
-                        <MenuItem onClick={this.handleClose}>
+                        <MenuItem
+                          onClick={e =>
+                            this.selectArc(e, "Tracer Bullet")
+                          }
+                        >
                           Tracer Bullet
                         </MenuItem>
                       </Menu>
@@ -107,7 +205,9 @@ class MainPage extends React.Component {
                     href="https://github.com/maggiecs/BoyAndTiger"
                     className="boy_tiger_github"
                   >
-                    <i className="fab fa-github" />
+                    <i className="fab fa-github" style={{ backgroundColor: "white", padding: "2px", borderRadius: "50%" }} />
+
+                   
                   </a>
 
                   <div className="next_section_button">
@@ -115,17 +215,37 @@ class MainPage extends React.Component {
                       className="main_page_scroll_down"
                       onClick={() => fullpageApi.moveSectionDown()}
                     >
-                      Move down
+                      About Us
                     </button>
                   </div>
                 </div>
 
-                <div className="section section2">
-                  <h1 className="about_us"> About Us</h1>
+                <div
+                  className="section section2"
+                  style={{
+                    backgroundImage: `url("wallpapers/wallpaper${
+                      this.rand1
+                    }.jpg")`,
+                    backgroundSize: "cover"
+                  }}
+                >
+                  {/* <h1 className="about_us"> About Us</h1> */}
 
                   <div className="people_div">
                     <div className="person1">
-                      <p>m blurb</p>
+                      <img
+                        alt="magatha pic"
+                        src={"about/magatha.png"}
+                        className="aboutImg"
+                      />
+                      <p>
+                        Maggie has always enjoyed reading the Comics
+                        section whenever she grabbed a newspaper.
+                        She thought Calvin and Hobbes was one of the
+                        most fun and relatable comics. When she’s
+                        not coding, she is finding new mountains to
+                        hike and new science fiction books to read.
+                      </p>
                       <div className="personal_sites_wrapper">
                         <a href="https://maggiechen.me/">
                           <i className="fas fa-user-circle" />
@@ -140,7 +260,22 @@ class MainPage extends React.Component {
                     </div>
 
                     <div className="person2">
-                      <p>c blurb</p>
+                      <img
+                        alt="cameron pic"
+                        src={"about/cameron.jpg"}
+                        className="aboutImg"
+                      />
+
+                      <p>
+                        Cameron fully intends on reading The
+                        Complete Calvin and Hobbes that is sitting
+                        on his bookshelf. It’ll happen one day! He
+                        is also a webcomic connoisseur whose
+                        cherished possessions include the two
+                        picturesforsadchildren books. When he’s not
+                        writing code, Cameron also writes short
+                        stories, plays, and poems.
+                      </p>
                       <div className="personal_sites_wrapper">
                         <a href="https://www.cameroncouch.me/">
                           <i className="fas fa-user-circle" />
@@ -155,7 +290,21 @@ class MainPage extends React.Component {
                     </div>
 
                     <div className="person3">
-                      <p>d blurb</p>
+                      <img
+                        alt="derek pic"
+                        src={"about/derek.jpg"}
+                        className="aboutImg"
+                      />
+
+                      <p>
+                        Derek loved Calvin and Hobbes growing up,
+                        and read all of the books cover to cover
+                        multiple times. He's a big fan of the
+                        existential dread Calvin faces daily, and
+                        enjoys the company. When he's not writing
+                        code, Derek likes to experience new cheeses
+                        and window shop for things he can't afford.
+                      </p>
                       <div className="personal_sites_wrapper">
                         <a href="https://derekdai.com/">
                           <i className="fas fa-user-circle" />
@@ -170,7 +319,22 @@ class MainPage extends React.Component {
                     </div>
 
                     <div className="person4">
-                      <p>g blurb</p>
+                      <img
+                        alt="gary pic"
+                        src={"about/gary.png"}
+                        className="aboutImg"
+                      />
+
+                      <p>
+                        Gary grew up with heaps of Calvin and Hobbes
+                        treasuries. He was obsessed with collecting
+                        them- from the essential to the
+                        authoritative. He was heartbroken to find
+                        they did not make his parents’ cardboard
+                        boxes when they moved a few years ago. When
+                        he's not writing code, Gary likes to play
+                        video games and watch TV/movies.
+                      </p>
                       <div className="personal_sites_wrapper">
                         <a href="https://www.garykangaroo.com/">
                           <i className="fas fa-user-circle" />
@@ -186,30 +350,38 @@ class MainPage extends React.Component {
                   </div>
                 </div>
 
-                <div className="section section3">
+                <div
+                  className="section section3"
+                  style={{
+                    backgroundImage: `url("wallpapers/bill.jpg")`,
+                    backgroundSize: "cover"
+                  }}
+                >
                   <h1 className="about_bill">Bill?</h1>
 
                   <div className="bill_blurb">
                     <p>
                       Bill Watterson, a golden God that walked
                       amongst men, never compromised on his artistic
-                      vision. 
+                      vision.
                     </p>
 
                     <p>
-                      This enigma of a man helped shape our childhoods through his art, and
-                      refused to commercialize Calvin and Hobbes
-                      (while lesser men would have in a second), for the better. 
+                      This enigma of a man helped shape our
+                      childhoods through his art, and refused to
+                      commercialize Calvin and Hobbes, for the
+                      better.
                     </p>
 
                     <p>
                       This website is an ode and homage, to Calvin,
-                      Hobbes, and above all, Bill.
+                      Hobbes, and above all, Bill's resolute
+                      character.
                     </p>
 
                     <p>
                       This website was built strictly for
-                      educational purposes (please don't sue us) and all credit is due to
+                      educational purposes and all credit is due to
                       Bill and his work.
                     </p>
                   </div>

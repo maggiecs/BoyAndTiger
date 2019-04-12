@@ -5,15 +5,28 @@ const Comic = require('../../models/Comic');
 const Comment = require('../../models/Comment');
 
 router.get('/', (req, res) => {
-    Comic.find()
-        .sort({ date: 1 })
-        .then(comics => res.json(comics))
-        .catch(err => 
-            res.status(404).json({ nocomicsfound: 'No comics found' }));
+    // const { skip = 0, limit = 10} = req.query;
+    //  {
+    //         skip: Number(skip),
+    //         limit: Number(limit)
+    //     }
+
+    if (req.query.searchedQuery) {
+        const regex = new RegExp(escapeRegex(req.query.searchedQuery), 'gi');
+        Comic.find({ "dialog": regex },)
+            .sort({ date: 1 })
+            .then(comics => res.json(comics))
+            .catch(err => res.status(404).json({ nocomicsfound: 'No comics found' }));   
+    } else {
+        Comic.find()
+            .sort({ date: 1 })
+            .then(comics => res.json(comics))
+            .catch(err => res.status(404).json({ nocomicsfound: 'No comics found' }));   
+    }
 });
 
 router.get('/:date', (req, res) => {
-    Comic.find({ date: req.params.date })
+    Comic.find( { datestring: parseInt(req.params.date) } )
         .then(comic => res.json(comic))
         .catch(err =>
             res.status(404).json({ nocomicfound: 'No comic found with that date' })
@@ -86,5 +99,8 @@ router.delete('/:date/comments/:comment', passport.authenticate('jwt', { session
         throw "You cannot delete this comment."
     }
 });
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;

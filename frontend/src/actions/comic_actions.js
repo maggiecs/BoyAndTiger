@@ -13,8 +13,8 @@ export const receiveComic = comic => ({
     comic
 });
 
-export const fetchComics = () => dispatch => (
-    getComics()
+export const fetchComics = (searchedQuery) => dispatch => (
+    getComics(searchedQuery)
         .then(comics => dispatch(receiveComics(comics)))
         .catch(err => console.log(err))
 );

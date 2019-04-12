@@ -10,6 +10,7 @@ import SignupFormContainer from './session/signup_form_container';
 import ProfileContainer from './profile/profile_container';
 import ComicsContainer from './comics/comics_container';
 import ComicContainer from './comic/comic_container';
+import ComicsSearchContainer from './comics/comics_search_container';
 
 const App = () => (
   <div>
@@ -17,6 +18,7 @@ const App = () => (
     <Switch>
       <Route exact path="/comics" component={ComicsContainer} />
       <Route exact path="/comics/:date" component={ComicContainer} />
+      <Route exact path="/results" component={ComicsSearchContainer} />
       <Route exact path="/" component={MainPage} />
 
       <AuthRoute exact path="/login" component={LoginFormContainer} />
