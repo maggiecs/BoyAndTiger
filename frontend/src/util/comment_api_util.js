@@ -9,7 +9,7 @@ export const getComment = (date, commentId) => {
 };
 
 export const createComment = (date, data) => {
-  return axios.post(`/api/comics/${date}/`, data)
+  return axios.post(`/api/comics/${date}/comments`, data)
 };
 
 export const editComment = (date, data) => {

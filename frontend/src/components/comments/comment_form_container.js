@@ -3,6 +3,7 @@ import { createComment } from '../../actions/comment_actions';
 import { connect } from 'react-redux';
 
 const msp = state => {
+  debugger
   return {
     comment: {
       text: '',
@@ -14,7 +15,7 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-    processForm: comment => dispatch(createComment(comment))
+    createComment: (comicDate,comment) => dispatch(createComment(comicDate,comment))
   };
 };
 

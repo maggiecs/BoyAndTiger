@@ -47,13 +47,13 @@ router.get('/:date/comments/:comment', (req, res) => {
 });
 
 router.post('/:date/comments', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    console.log(req.body);
     User.findById(req.user.id).then(user => {
         if (!user) return res.sendStatus(401);
-
-        let comment = new Comment(req.body.comment);
-        comment.text = req.body.text;
-        comment.comicDate = req.params.date;
+        let comment = new Comment();
         comment.user = user.id;
+        comment.text = req.body.text;
+        comment.comicDate = req.body.comicDate;
         comment.save();
 
         Comic.findOne({ date: req.params.date })

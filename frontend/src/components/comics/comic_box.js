@@ -1,5 +1,4 @@
 import React from 'react';
-import CommentForm from '../comments/comment_form_container';
 import { Link } from 'react-router-dom';
 
 class ComicBox extends React.Component {
@@ -11,7 +10,6 @@ class ComicBox extends React.Component {
                     <img src={"images/" + this.props.date + ".gif"} alt={this.props.dialog}></img>
                 </Link>
                 <p>{this.props.dialog}</p>
-                <CommentForm />
             </div>
         );
     }

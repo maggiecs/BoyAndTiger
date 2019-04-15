@@ -6,7 +6,7 @@ class CommentForm extends React.Component {
     this.state = {
       user: this.props.comment.user,
       text: '',
-      comicDate: '',
+      comicDate: this.props.date,
     };
     this.handleSubmit = this.handleSubmit.bind(this)
   };
@@ -18,7 +18,8 @@ class CommentForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createComment(this.state);
+    debugger
+    this.props.createComment(this.props.date, this.state);
   };
 
   render() {

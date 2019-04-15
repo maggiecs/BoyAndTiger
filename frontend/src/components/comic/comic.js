@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import "./comic.css";
+import CommentForm from '../comments/comment_form_container';
 
 
 class Comic extends React.Component {
@@ -125,6 +126,7 @@ class Comic extends React.Component {
                     </Link>
                 </div>
                 
+                <CommentForm date={this.props.match.params.date}/>
                 </div>
               </>
             );

@@ -180,7 +180,7 @@ class SignupModal extends React.Component {
                 Cancel
               </Button>
                   <Button onClick={this.handleSubmit} color="primary">
-                Subscribe to pewdiepie
+                Subscribe
               </Button>
             </DialogActions>
           </Dialog>
