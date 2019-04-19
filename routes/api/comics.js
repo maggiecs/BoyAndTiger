@@ -55,14 +55,6 @@ router.post('/:date/comments', passport.authenticate('jwt', { session: false }),
         comment.text = req.body.text;
         comment.comicDate = req.body.comicDate;
         comment.save();
-
-        Comic.findOne({ date: req.params.date })
-            .then(comic => {
-                comic.comments.push(comment)
-                comic.save();
-            })
-            .catch(err => res.status(404).json({ nocomicfound: 'No comic found with that date' }));
-
         return res.json(comment)
     }).catch(err => console.log(err));
 });
