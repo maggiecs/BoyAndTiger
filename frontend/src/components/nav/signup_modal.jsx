@@ -112,7 +112,7 @@ class SignupModal extends React.Component {
             color="primary"
             onClick={this.handleClickOpen}
           >
-               <span    style={{ cursor: 'pointer' }}>Sign Up</span>
+               <span className="nav-link" style={{ cursor: 'pointer' }}>Sign Up</span>
           </div>
           <Dialog
             open={this.state.open}
