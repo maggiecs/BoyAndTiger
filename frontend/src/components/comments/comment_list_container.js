@@ -1,4 +1,4 @@
-import CommentList from './comment_list';
+import CommentList from './comment_list.jsx';
 import { fetchComments } from '../../actions/comment_actions';
 import { connect } from 'react-redux';
 
