@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 export const getComments = date => {
-  return axios.get(`/api/comics/${date}`)
+  return axios.get(`/api/comics/${date}/comments`)
 };
 
 export const getComment = (date, commentId) => {
-  return axios.get(`/api/comics/${date}/${commentId}`);
+  return axios.get(`/api/comics/${date}/${commentId}`)
 };
 
 export const createComment = (date, data) => {

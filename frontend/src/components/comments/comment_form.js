@@ -18,8 +18,8 @@ class CommentForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
     this.props.createComment(this.props.date, this.state);
+    this.setState({text: ""});
   };
 
   render() {

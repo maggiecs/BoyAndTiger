@@ -51,6 +51,7 @@ router.post('/:date/comments', passport.authenticate('jwt', { session: false }),
     User.findById(req.user.id).then(user => {
         if (!user) return res.sendStatus(401);
         let comment = new Comment();
+        comment.author = user.handle;
         comment.user = user.id;
         comment.text = req.body.text;
         comment.comicDate = req.body.comicDate;

@@ -10,6 +10,10 @@ const CommentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
+  author: {
+    type: String,
+    ref: 'author'
+  },
   comicDate: {
     type: String,
     ref: 'comicDate'

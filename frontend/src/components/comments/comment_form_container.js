@@ -3,7 +3,6 @@ import { createComment } from '../../actions/comment_actions';
 import { connect } from 'react-redux';
 
 const msp = state => {
-  debugger
   return {
     comment: {
       text: '',

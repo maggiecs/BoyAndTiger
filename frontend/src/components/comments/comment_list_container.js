@@ -3,19 +3,14 @@ import { fetchComments } from '../../actions/comment_actions';
 import { connect } from 'react-redux';
 
 const msp = state => {
-  debugger
   return {
-    comment: {
-      text: '',
-      comicDate: '',
-      user: state.session.user,
-    }
-  }
-}
+    comments: Object.values(state.comments.all)
+  };
+};
 
 const mdp = dispatch => {
   return {
-    fetchComments: () => dispatch(fetchComments())
+    fetchComments: (date) => dispatch(fetchComments(date))
   };
 };
 
