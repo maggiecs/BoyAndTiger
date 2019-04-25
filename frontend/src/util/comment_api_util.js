@@ -16,6 +16,6 @@ export const editComment = (date, data) => {
   return axios.patch(`api/comics/${date}/comments/${data.commentId}`, data)
 };
 
-export const deleteComment = (date, data) => {
-  return axios.delete(`api/comics/${date}/comments/${data.commentId}`, data)
+export const deleteComment = (date, commentId) => {
+  return axios.delete(`api/comics/${date}/comments/${commentId}`, commentId)
 };

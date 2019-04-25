@@ -14,9 +14,9 @@ export const receiveComment = comment => ({
   comment
 });
 
-export const removeComment = commentId => ({
+export const removeComment = comment => ({
   type: REMOVE_COMMENT,
-  commentId
+  comment
 });
 
 export const fetchComments = date => dispatch => (
@@ -43,8 +43,8 @@ export const editComment = (date, data) => dispatch => (
     .catch(err => console.log(err))
 );
 
-export const deleteComment = (date, data) => dispatch => (
-  CommentAPIUtil.deleteComment(date, data)
+export const deleteComment = (date, commentId) => dispatch => (
+  CommentAPIUtil.deleteComment(date, commentId)
     .then(comment => dispatch(removeComment(comment)))
     .catch(err => console.log(err))
 );

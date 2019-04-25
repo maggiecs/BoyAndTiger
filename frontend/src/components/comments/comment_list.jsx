@@ -1,12 +1,9 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
-
+import CommentListItem from './comment_list_item_container.js';
+import './comment.css';
 
 class CommentList extends React.Component {
-  constructor(props) {
-    super(props);
-    };
-
   componentWillMount(){
     this.props.fetchComments(this.props.match.params.date);
   }
@@ -18,12 +15,10 @@ class CommentList extends React.Component {
   }
 
   render() {
-    let comments = (this.props.comments || {}).map((comment) => {
+    let comments = (this.props.comments || {}).map((comment, idx) => {
         return (
-          <li className="comment-item">
-            {comment.author}
-            {comment.date}
-            {comment.text}
+          <li className="comment-item" key={idx}>
+            <CommentListItem comment={comment} />
           </li>
         )
     });

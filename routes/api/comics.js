@@ -80,14 +80,12 @@ router.patch('/:date/comments/:comment', passport.authenticate('jwt', { session:
 })
 
 router.delete('/:date/comments/:comment', passport.authenticate('jwt', { session: false }), (req, res) => {
+    console.log("beep beep!")
     if (req.comment.user && req.comment.user._id.toString() === req.user._id.toString()) {
-        Comic.findOne({ date: req.params.date })
-            .then(comic => {
-                comic.comments.remove(req.comment.id)
-                comic.save();
-            })
-            .catch(err => console.log(err));
-        req.comment.delete().then(() => res.sendStatus(204)).catch(() => res.sendStatus(403));
+        let comment = req.comment;
+        comment.delete()
+            .then(() => res.json(comment))
+            .catch(() => res.sendStatus(403));
     } else {
         throw "You cannot delete this comment."
     }

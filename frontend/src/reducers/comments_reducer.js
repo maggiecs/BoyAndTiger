@@ -12,10 +12,10 @@ const CommentsReducer = (state = { all: {}, comment: {} }, action) => {
       newState.all = action.comments.data;
       return newState;
     case RECEIVE_COMMENT:
-      newState.comment = action.comment.data;
+      newState.all.push(action.comment.data);
       return newState;
     case REMOVE_COMMENT:
-      delete newState[action.commentId.data]
+      newState.all = newState.all.filter(({_id}) => _id !== action.comment.data._id )
       return newState;
     default:
       return state;
