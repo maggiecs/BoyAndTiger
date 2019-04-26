@@ -1,4 +1,5 @@
 import React from "react";
+import {withRouter} from "react-router-dom";
 
 class CommentForm extends React.Component {
   constructor(props) {
@@ -6,14 +7,14 @@ class CommentForm extends React.Component {
     this.state = {
       user: this.props.comment.user,
       text: '',
-      comicDate: this.props.date,
+      comicDate: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this)
   };
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.userLoggedIn !== this.props.userLoggedIn){
-      this.renderFormOrNah();
+  componentDidUpdate() {
+    if (this.state.comicDate !== this.props.match.params.date){
+      this.setState({ comicDate: this.props.match.params.date});
     }
   }
 
@@ -24,7 +25,7 @@ class CommentForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createComment(this.props.date, this.state);
+    this.props.createComment(this.state.comicDate, this.state);
     this.setState({text: ""});
   };
 
@@ -62,4 +63,4 @@ class CommentForm extends React.Component {
   };
 };
 
-export default CommentForm;
+export default withRouter(CommentForm);
