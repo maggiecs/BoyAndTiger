@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const msp = state => {
   return {
-    currentUser: state.session.user.id
+    currentUser: (state.session.user && state.session.user.id) || {},
   };
 };
 

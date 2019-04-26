@@ -8,7 +8,9 @@ const msp = state => {
       text: '',
       comicDate: '',
       user: state.session.user,
-    }
+    },
+    currentUser: (state.session.user && state.session.user.id) || {},
+    userLoggedIn: Boolean(state.session.user && state.session.user.id),
   }
 }
 

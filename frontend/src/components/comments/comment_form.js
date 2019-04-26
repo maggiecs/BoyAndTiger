@@ -11,6 +11,12 @@ class CommentForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   };
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.userLoggedIn !== this.props.userLoggedIn){
+      this.renderFormOrNah();
+    }
+  }
+
   updateText() {
     return e =>
       this.setState({ text: e.currentTarget.value });
@@ -22,20 +28,36 @@ class CommentForm extends React.Component {
     this.setState({text: ""});
   };
 
+  showCommentForm(){
+    return(
+      <form onSubmit={this.handleSubmit}>
+        <input
+          type="text"
+          value={this.state.text}
+          onChange={this.updateText()}
+          placeholder={`I love this strip!`}
+          className="comment-form"
+        />
+        <input type="submit" className="submit-btn" />
+      </form>
+    )
+  }
+
+  showLoginMessage(){
+    return (
+      <span>You must be logged in to comment!</span>
+    )
+  }
+
+  renderFormOrNah(){
+    return this.props.userLoggedIn ? this.showCommentForm() : this.showLoginMessage()
+  }
+
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            value={this.state.text}
-            onChange={this.updateText()}
-            placeholder={`I love this strip!`}
-            className="comment-form"
-          />
-          <input type="submit" className="submit-btn" />
-        </form>
-      </div>
+      <>
+      {this.renderFormOrNah()}
+      </>
     );
   };
 };

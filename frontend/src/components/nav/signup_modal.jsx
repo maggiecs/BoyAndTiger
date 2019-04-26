@@ -45,7 +45,6 @@ class SignupModal extends React.Component {
 
 
    componentWillReceiveProps(nextProps) {
-      debugger
       if (nextProps.signedIn === true) {
          let user = {
             email: this.state.email,
@@ -69,7 +68,6 @@ class SignupModal extends React.Component {
    }
 
    handleSubmit(e) {
-      // debugger
       e.preventDefault();
       let user = {
          email: this.state.email,
@@ -163,10 +161,9 @@ class SignupModal extends React.Component {
                   margin="dense"
                   id="name"
                   label="Confirm Password"
-                  value={this.state.password}
+                  value={this.state.password2}
                   type="password"
-                  // onChange={this.update("password2")}
-                  onChange={this.update("password")}
+                  onChange={this.update("password2")}
                   placeholder="Confirm Password"
                   fullWidth
                 />
