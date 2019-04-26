@@ -1,14 +1,14 @@
 h1 {
    color: blue;
-font-family: 'Open Sans', sans-serif;
+   font-family: 'Open Sans', sans-serif;
 }
 
 p {
-font-family: 'Open Sans', sans-serif;
+   font-family: 'Open Sans', sans-serif;
 }
 
 div {
-font-family: 'Open Sans', sans-serif;
+   font-family: 'Open Sans', sans-serif;
 }
 
 .wallpaper {
@@ -28,20 +28,17 @@ font-size: 50px; */
 
 
 .logo {
-   font-size: 75px;
+   font-size: 50px;
    color: white;
    text-shadow: 4px 5px black;
    font-family: 'Indie Flower', cursive;
-
-     display: flex;
-  justify-content: center;
-   margin: auto;
+   display: flex;
+   margin-bottom: 20px;
    justify-content: space-evenly;
 }
 
 .splashPageImage {
    position: relative; 
-   /* width: 75%; */
    min-height: 40%;
    max-height: 55%;
    width: auto;
@@ -54,32 +51,33 @@ font-size: 50px; */
 .main_page_nav {
    display: flex;
    width: 700px;
-   font-size: 50px;
-   /* background-color: blue; */
+   font-size: 45px;
    align-items: center;
-  text-align: center;
+   text-align: center;
    justify-content: space-between;
    position: relative;
-   left: 30%;
-
+   margin: 0 auto;
 }
 
 .boy_tiger_github {
    color: black;
    font-size: 50px;
    position: relative;
-   left: 50%;
+   margin: 0 auto;
+}
+
+.git-logo{
+   display: block;
+   text-align: center;
 }
 
 .main_page_calendar {
    /* width: 150px;
    height: 100px;
    background-color: green; */
-
 }
 
 .main_page_scroll_down {
-
    position: absolute;
    text-align: center;
    bottom: 0%;
@@ -120,9 +118,7 @@ font-size: 50px; */
    justify-content: center;
    margin: auto;
    margin-top: 10px;
-   /* justify-content: space-evenly; */
    position: relative;
-
 }
 
 
@@ -137,7 +133,6 @@ font-size: 50px; */
    font-size: 30px;
    width: 22%;
    margin-bottom: 15px;
-
 }
 
 .fa-github {
@@ -159,6 +154,7 @@ font-size: 50px; */
    display: block;
    padding-bottom: 50px;
 }
+
 .aboutImg {
   object-fit: cover;
   width: 100%;
@@ -179,6 +175,7 @@ font-size: 50px; */
    justify-content: space-between; */
    /* background-color: gray; */
 }
+
 .person2 {
    width: 25%;
    height: 100%;
@@ -190,6 +187,7 @@ font-size: 50px; */
    justify-content: space-between; */
    /* background-color: green; */
 }
+
 .person3 {
    width: 25%;
    height: 100%;
@@ -201,6 +199,7 @@ font-size: 50px; */
    justify-content: space-between; */
    /* background-color: blue; */
 }
+
 .person4 {
    border-radius: 10px;
    width: 25%;
@@ -222,7 +221,6 @@ font-size: 50px; */
    font-size: 50px;
    text-shadow: 2px 2px black;
    padding: 10px;
-
 }
 
 .bill_blurb {
@@ -236,7 +234,6 @@ font-size: 50px; */
 
 .fa-random {
    color: black;
-   
    background-color: white;
    /* mix-blend-mode: difference; */
     padding:15px;
@@ -249,8 +246,9 @@ font-size: 50px; */
      2px -2px 0 #000,
     -2px  2px 0 #000,
      2px  2px 0 #000;
-
-
- 
   color: white;
+}
+
+.calendar:hover{
+   cursor: pointer;
 }

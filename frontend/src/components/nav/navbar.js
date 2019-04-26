@@ -58,7 +58,7 @@ class NavBar extends React.Component {
   getLinks() {
     if (this.props.loggedIn) {
       return (
-        <div>
+        <div className="nav-link-list">
           <span>
             <Link to={"/profile"} className="nav-link">
               Profile
