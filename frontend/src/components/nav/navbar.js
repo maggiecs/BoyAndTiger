@@ -30,7 +30,6 @@ class NavBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // debugger
     this.props.fetchComics(this.state).then(() => {
       this.props.history.push({
         pathname: '/results',
@@ -59,7 +58,7 @@ class NavBar extends React.Component {
   getLinks() {
     if (this.props.loggedIn) {
       return (
-        <div>
+        <div className="nav-link-list">
           <span>
             <Link to={"/profile"} className="nav-link">
               Profile

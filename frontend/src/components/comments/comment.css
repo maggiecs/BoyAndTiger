@@ -1,0 +1,93 @@
+.comment-form-wrapper{
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.comment-form-wrapper form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.comment-form-wrapper form input{
+  width: 80vw;
+}
+
+.submit-btn{
+  border: 1px solid silver;
+  background-color: orange;
+  color: white;
+  border-radius: 8px;
+  max-width: 80px;
+  margin-top: 10px;
+}
+
+.login-message{
+  color: silver;
+  font-size: 12px;
+}
+.comment-list-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+.comment-list{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  border-radius: 8px;
+  background-color: rgba(255, 165, 0, 0.80);
+}
+
+.comment{
+  display: flex;
+  width: 80vw;
+  max-width: 950px;
+  min-width: 300px;
+  margin: 10px 5px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid #FF9800;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-body{
+  font-size: 12px;
+}
+
+.comment-info{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 65px;
+}
+
+.comment-date{
+  font-size: 8px;
+  color: grey;
+}
+
+div.chip{
+  width: 85px;
+  display: flex;
+  margin-left: 5px;
+}
+
+.chip-replacement{
+  width: 85px;
+}
+
+/* Overwriting Material UI defaults */
+span.MuiChip-label-20{
+  font-size: 12px;
+}
+
+div.MuiChip-outlinedSecondary-694{
+  color: red;
+  border: 1px solid red;
+}
+
+svg.MuiSvgIcon-root-708{
+  color: red;
+}

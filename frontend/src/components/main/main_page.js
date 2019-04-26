@@ -148,7 +148,7 @@ class MainPage extends React.Component {
                       <DatePicker
                         // inline
                         // <i class="fas fa-calendar-alt" />
-                        value={"click here"}
+                        value={"Select by Date"}
                         selected={this.date1}
                         className="calendar"
                         selectsStart
@@ -201,14 +201,14 @@ class MainPage extends React.Component {
                     </div>
                   </div>
 
+                <div className="git-logo">
                   <a
                     href="https://github.com/maggiecs/BoyAndTiger"
                     className="boy_tiger_github"
                   >
                     <i className="fab fa-github" style={{ backgroundColor: "white", padding: "2px", borderRadius: "50%" }} />
-
-                   
                   </a>
+                </div>
 
                   <div className="next_section_button">
                     <button

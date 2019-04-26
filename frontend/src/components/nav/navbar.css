@@ -9,10 +9,11 @@
   background-color: orange;
   box-sizing: border-box;
   opacity: 0.90;
+  flex-wrap: nowrap;
 }
 
 .nav-search {
-  width: 200%;
+  width: 20vw;
   border: 1px solid #000000;
   padding: 5px;
   border-radius: 2px 0px 0px 2px;
@@ -37,7 +38,9 @@
 
 .nav-search-form {
   display: flex;
-  width: 40%;
-  position: absolute;
-  left: 30%;
+  margin-right: 0 40px;
+}
+
+.nav-link-list{
+  margin-left: 4px;
 }

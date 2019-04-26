@@ -19,7 +19,7 @@ const ComicSchema = new Schema({
     },
     desc: {
         type: String,
-    },
+    }
 });
 
 module.exports = Comic = mongoose.model('comic', ComicSchema);
