@@ -30,7 +30,6 @@ class NavBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // debugger
     this.props.fetchComics(this.state).then(() => {
       this.props.history.push({
         pathname: '/results',

@@ -11,9 +11,17 @@ class CommentListItem extends React.Component {
   renderDeleteIcon(){
     if (this.props.currentUser === this.props.comment.user) {
       return(
-        <Chip onDelete={this.handleDelete.bind(this)}/>
+        <Chip 
+          className="chip"
+          label="Delete" 
+          onClick={this.handleDelete.bind(this)} 
+          onDelete={this.handleDelete.bind(this)}
+          variant="outlined"
+          color="secondary"
+        />
       )
     }
+    return(<span className="chip-replacement"> </span>)
   }
 
   render() {
@@ -21,7 +29,9 @@ class CommentListItem extends React.Component {
       <div className="comment">
         <div className="comment-info">
           <span>{this.props.comment.author}</span>
-          <span className="comment-date">{moment(this.props.comment.date).fromNow(true)}</span>
+          <span className="comment-date">
+            {moment(this.props.comment.date).fromNow(true)}
+          </span>
         </div>
         <div className="comment-body">
           {this.props.comment.text}

@@ -24,9 +24,11 @@ class CommentList extends React.Component {
     });
 
     return (
-      <ul className="comment-list">
-        {comments}
-      </ul>
+      <div className="comment-list-wrapper">
+        <ul className="comment-list">
+          {comments}
+        </ul>
+      </div>
     )
   };
 }

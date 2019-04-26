@@ -80,7 +80,6 @@ router.patch('/:date/comments/:comment', passport.authenticate('jwt', { session:
 })
 
 router.delete('/:date/comments/:comment', passport.authenticate('jwt', { session: false }), (req, res) => {
-    console.log("beep beep!")
     if (req.comment.user && req.comment.user._id.toString() === req.user._id.toString()) {
         let comment = req.comment;
         comment.delete()

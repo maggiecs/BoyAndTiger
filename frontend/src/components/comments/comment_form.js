@@ -45,7 +45,7 @@ class CommentForm extends React.Component {
 
   showLoginMessage(){
     return (
-      <span>You must be logged in to comment!</span>
+      <span className="login-message">Log in to write a comment!</span>
     )
   }
 
@@ -55,9 +55,9 @@ class CommentForm extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="comment-form-wrapper">
       {this.renderFormOrNah()}
-      </>
+      </div>
     );
   };
 };

@@ -101,8 +101,6 @@ class SignupModal extends React.Component {
       this.setState({ open: false });
    };
    render() {
-      // PROPS.HISTORY?????
-      // debugger
       return (
          <div style={{ display: 'inline-block' }}>
           <div
