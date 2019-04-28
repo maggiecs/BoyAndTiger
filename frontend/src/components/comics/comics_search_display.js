@@ -39,7 +39,12 @@ class SearchedComics extends React.Component {
             return searchedComics;
         } else {
             return (
-                <div>
+                <div className="not-found-page">
+                    <img
+                        alt="no search"
+                        src={"images/calvin_hobbes_no_search.jpg"}
+                        className="not-found-img"
+                    />
                     <h2>No results found</h2>
                     <p>Try different keywords</p>
                 </div>

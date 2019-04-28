@@ -27,3 +27,15 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.not-found-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 200px;
+}
+
+.not-found-img {
+    width: 300px;
+}
