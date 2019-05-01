@@ -93,8 +93,8 @@ class MainPage extends React.Component {
 
   rand1 = Math.floor(Math.random() * 7) + 1;
   rand2 = Math.floor(Math.random() * 7) + 1;
-  date1 = new Date(1985,11,18);
-  date2 = new Date(1995,12,31);
+  date1 = new Date(1985,10,18);
+  date2 = new Date(1995,11,31);
 
   render() {
     let todayDate = this.parseTodayDate();
@@ -146,10 +146,8 @@ class MainPage extends React.Component {
 
                     <div className="main_page_calendar">
                       <DatePicker
-                        // inline
-                        // <i class="fas fa-calendar-alt" />
-                        value={"Select by Date"}
-                        selected={this.date1}
+                        value={"SELECT BY DATE"}
+                        selected={this.date1 - 1}
                         className="calendar"
                         selectsStart
                         minDate={this.date1}
@@ -165,6 +163,7 @@ class MainPage extends React.Component {
                         aria-owns={open ? "fade-menu" : undefined}
                         aria-haspopup="true"
                         onClick={this.handleClick}
+                        variant="contained"
                         style={{ backgroundColor: "white" }}
                       >
                         Select Character
