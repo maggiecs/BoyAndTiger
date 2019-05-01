@@ -93,8 +93,8 @@ class MainPage extends React.Component {
 
   rand1 = Math.floor(Math.random() * 7) + 1;
   rand2 = Math.floor(Math.random() * 7) + 1;
-  date1 = new Date(1985,11,18);
-  date2 = new Date(1995,12,31);
+  date1 = new Date(1985,10,18);
+  date2 = new Date(1995,11,31);
 
   render() {
     let todayDate = this.parseTodayDate();
