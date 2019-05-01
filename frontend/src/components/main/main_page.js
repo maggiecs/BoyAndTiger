@@ -146,10 +146,8 @@ class MainPage extends React.Component {
 
                     <div className="main_page_calendar">
                       <DatePicker
-                        // inline
-                        // <i class="fas fa-calendar-alt" />
-                        value={"Select by Date"}
-                        selected={this.date1}
+                        value={"SELECT BY DATE"}
+                        selected={this.date1 - 1}
                         className="calendar"
                         selectsStart
                         minDate={this.date1}
@@ -165,6 +163,7 @@ class MainPage extends React.Component {
                         aria-owns={open ? "fade-menu" : undefined}
                         aria-haspopup="true"
                         onClick={this.handleClick}
+                        variant="contained"
                         style={{ backgroundColor: "white" }}
                       >
                         Select Character
