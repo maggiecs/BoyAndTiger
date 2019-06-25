@@ -87,6 +87,14 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
   });
 });
 
+router.get('/:email', (req, res) => {
+  User.find({ email: req.params.email })
+    .then(user => res.json(user))
+    .catch(err =>
+      res.status(404).json({ nouserfound: 'No user found with that email' })
+    );
+});
+
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
 module.exports = router;
