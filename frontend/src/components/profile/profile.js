@@ -1,4 +1,5 @@
 import React from 'react';
+import CommentListItem from '../comments/comment_list_item_container.js';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props.currentUser.id)
+    this.props.fetchUserComments(this.props.currentUser.id);
   }
 
   componentWillReceiveProps(newState) {
@@ -17,15 +18,21 @@ class Profile extends React.Component {
   }
 
   render() {
-    if (false) {
-      return (<div>This user has no Comments</div>)
-    } else {
+    let comments = (this.props.comments || {}).map((comment, idx) => {
       return (
-        <div>
-          <h2>All of This User's Comments</h2>
-        </div>
-      );
-    }
+        <li className="comment-item" key={idx}>
+          <CommentListItem comment={comment} />
+        </li>
+      )
+    });
+
+    return (
+      <div className="comment-list-wrapper">
+        <ul className="comment-list">
+          {comments}
+        </ul>
+      </div>
+    )
   }
 }
 
