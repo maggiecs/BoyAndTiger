@@ -17,13 +17,12 @@ class Profile extends React.Component {
   }
 
   render() {
-    if (this.state.tweets.length === 0) {
+    if (false) {
       return (<div>This user has no Comments</div>)
     } else {
       return (
         <div>
           <h2>All of This User's Comments</h2>
-          ))}
         </div>
       );
     }
