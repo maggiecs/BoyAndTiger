@@ -65,21 +65,6 @@ class NavBar extends React.Component {
             </Link>
           </span>
 
-          {/* <br /> */}
-
-          <span>
-            <Link to={"/comics"} className="nav-link">
-              Comics
-            </Link>
-          </span>
-
-          {/* <br /> */}
-
-          <span>
-            <Link to={"/new_tweet"} className="nav-link">
-              Fan Drawings
-            </Link>
-          </span>
           <button className="nav-link" onClick={this.logoutUser}>Logout</button>
         </div>
       );
