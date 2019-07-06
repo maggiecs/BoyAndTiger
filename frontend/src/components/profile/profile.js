@@ -1,5 +1,6 @@
 import React from 'react';
-import CommentListItem from '../comments/comment_list_item_container.js';
+import CommentProfileItem from '../comments/comment_profile_item_container.js';
+import './profile.css';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -21,14 +22,15 @@ class Profile extends React.Component {
     let comments = (this.props.comments || {}).map((comment, idx) => {
       return (
         <li className="comment-item" key={idx}>
-          <CommentListItem comment={comment} />
+          <CommentProfileItem comment={comment} />
         </li>
       )
     });
 
     return (
-      <div className="comment-list-wrapper">
-        <ul className="comment-list">
+      <div className="profile-wrapper">
+        <ul className="comics-container">
+          <h1 className="profile-header">Your comments</h1>
           {comments}
         </ul>
       </div>
