@@ -98,7 +98,7 @@ router.get('/:id', (req, res) => {
 
 router.get('/:id/comments', (req, res) => {
   Comment.find({ user: req.params.id })
-    .sort({ date: 1 })
+    .sort({ date: -1 })
     .then(comments => res.json(comments))
     .catch(err => res.status(404).json({ nocommentsfound: 'No comments found' }));
 });
