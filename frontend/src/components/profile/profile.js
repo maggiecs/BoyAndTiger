@@ -1,4 +1,6 @@
 import React from 'react';
+import CommentProfileItem from '../comments/comment_profile_item_container.js';
+import './profile.css';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -9,7 +11,7 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props.currentUser.id)
+    this.props.fetchUserComments(this.props.currentUser.id);
   }
 
   componentWillReceiveProps(newState) {
@@ -17,16 +19,22 @@ class Profile extends React.Component {
   }
 
   render() {
-    if (this.state.tweets.length === 0) {
-      return (<div>This user has no Comments</div>)
-    } else {
+    let comments = (this.props.comments || {}).map((comment, idx) => {
       return (
-        <div>
-          <h2>All of This User's Comments</h2>
-          ))}
-        </div>
-      );
-    }
+        <li className="comment-item" key={idx}>
+          <CommentProfileItem comment={comment} />
+        </li>
+      )
+    });
+
+    return (
+      <div className="profile-wrapper">
+        <ul className="comics-container">
+          <h1 className="profile-header">Your comments</h1>
+          {comments}
+        </ul>
+      </div>
+    )
   }
 }
 

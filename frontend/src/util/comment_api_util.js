@@ -19,3 +19,7 @@ export const editComment = (date, data) => {
 export const deleteComment = (date, commentId) => {
   return axios.delete(`api/comics/${date}/comments/${commentId}`, commentId)
 };
+
+export const getUserComments = (userId) => {
+  return axios.get(`/api/users/${userId}/comments`)
+};

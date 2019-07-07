@@ -48,3 +48,9 @@ export const deleteComment = (date, commentId) => dispatch => (
     .then(comment => dispatch(removeComment(comment)))
     .catch(err => console.log(err))
 );
+
+export const fetchUserComments = userId => dispatch => (
+  CommentAPIUtil.getUserComments(userId)
+    .then(comments => dispatch(receiveComments(comments)))
+    .catch(err => console.log(err))
+);

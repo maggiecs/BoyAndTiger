@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
+const Comment = require('../../models/Comment');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
@@ -85,6 +86,21 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
     handle: req.user.handle,
     email: req.user.email
   });
+});
+
+router.get('/:id', (req, res) => {
+  User.find({ _id: req.params.id })
+    .then(user => res.json(user))
+    .catch(err =>
+      res.status(404).json({ nouserfound: 'No user found with that id' })
+    );
+});
+
+router.get('/:id/comments', (req, res) => {
+  Comment.find({ user: req.params.id })
+    .sort({ date: -1 })
+    .then(comments => res.json(comments))
+    .catch(err => res.status(404).json({ nocommentsfound: 'No comments found' }));
 });
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
