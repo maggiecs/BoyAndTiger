@@ -116,15 +116,18 @@ class Comic extends React.Component {
                 
                 <div className="comicControls">
                     <Link to={'/comics/' + prevDate}>
-                                <i className="fas fa-caret-left"></i>                    </Link>
+                        <i className="fas fa-caret-left"></i>
+                        <p className="nav-text">previous</p>                    
+                    </Link>
 
-                            <div>
-                                <button onClick={e => this.randomDate(e)}>
-                                    <i className="fas fa-random" />
-                                </button>
-                            </div>
+                    <button onClick={e => this.randomDate(e)}>
+                        <i className="fas fa-random" />
+                        <p className="nav-text">random</p>
+                    </button>
+
                     <Link to={'/comics/' + nextDate}>
-                                <i className="fas fa-caret-right"></i>
+                        <i className="fas fa-caret-right"></i>
+                        <p className="nav-text">next</p>
                     </Link>
                 </div>
                 
