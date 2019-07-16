@@ -147,7 +147,7 @@ class MainPage extends React.Component {
                     <div className="main_page_calendar">
                       <DatePicker
                         value={"SELECT BY DATE"}
-                        selected={this.date1 - 1}
+                        selected={new Date(1985, 10, 17)}
                         className="calendar"
                         selectsStart
                         minDate={this.date1}
