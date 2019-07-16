@@ -36,7 +36,9 @@ class CommentForm extends React.Component {
           type="text"
           value={this.state.text}
           onChange={this.updateText()}
-          placeholder={`I love this strip!`}
+          placeholder={`enter a comment`}
+          onFocus={(e) => e.target.placeholder = ""}
+          onBlur={(e) => e.target.placeholder = "enter a comment"}
           className="comment-form"
         />
         <input type="submit" className="submit-btn" />
