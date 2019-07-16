@@ -131,7 +131,6 @@ class SignupModal extends React.Component {
                 />
 
                 <TextField
-                  autoFocus
                   margin="dense"
                   id="name"
                   label="Handle"
@@ -143,7 +142,6 @@ class SignupModal extends React.Component {
                 />
 
                 <TextField
-                  autoFocus
                   margin="dense"
                   id="name"
                   label="Password"
@@ -155,7 +153,6 @@ class SignupModal extends React.Component {
                 />
 
                 <TextField
-                  autoFocus
                   margin="dense"
                   id="name"
                   label="Confirm Password"
