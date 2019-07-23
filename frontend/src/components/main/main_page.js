@@ -10,17 +10,7 @@ import Fade from "@material-ui/core/Fade";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
-// class MySection extends React.Component {
-   
-//    render() {
-//       return (
-//          <div className="section">
-//             <h3>banana</h3>
-//          </div>
-//       );
-//    }
-// }
+import { Link } from 'react-router-dom';
 
 class MainPage extends React.Component {
 
@@ -123,15 +113,17 @@ class MainPage extends React.Component {
                 >
                   <h1 className="logo">Boy and Tiger</h1>
 
-                  <img
-                    className="splashPageImage"
-                    alt="todays comic"
-                    src={
-                      "https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" +
-                      todayDate +
-                      ".jpg"
-                    }
-                  />
+                  <Link to={'/comics/' + todayDate}>
+                    <img
+                      className="splashPageImage"
+                      alt="todays comic"
+                      src={
+                        "https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" +
+                        todayDate +
+                        ".jpg"
+                      }
+                    />
+                  </Link>
 
                   <div className="main_page_nav">
                     {/* buttons go here */}
