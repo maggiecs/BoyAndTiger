@@ -26,6 +26,15 @@ div {
    justify-content: space-evenly;
 }
 
+.intro-text {
+   font-size: 32px;
+   color: white;
+   text-shadow: 2px 3px black;
+   font-family: 'Indie Flower', cursive;
+   display: flex;
+   justify-content: center;
+}
+
 .splashPageImage {
    position: relative; 
    max-height: 55%;
