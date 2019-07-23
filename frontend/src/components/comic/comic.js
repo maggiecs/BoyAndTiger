@@ -5,6 +5,7 @@ import "./comic.css";
 import CommentForm from '../comments/comment_form_container';
 import CommentList from '../comments/comment_list_container';
 
+import DatePicker from "react-datepicker";
 
 class Comic extends React.Component {
     constructor(props) {
@@ -15,6 +16,7 @@ class Comic extends React.Component {
         };
 
         this.onKeyDown = this.onKeyDown.bind(this);
+        this.handleCalendarPick = this.handleCalendarPick.bind(this);
     }
 
     componentWillMount() {
@@ -40,6 +42,17 @@ class Comic extends React.Component {
         // A comic comes in as an array of one element.
         this.setState({ comic: newState.comic[0] });
     }
+
+    handleCalendarPick = date => {
+        let yyyy = date.getFullYear();
+        let mm = date.getMonth() + 1;
+        let dd = date.getDate();
+        mm = ((mm > 9 ? '' : '0') + mm);
+        dd = ((dd > 9 ? '' : '0') + dd);
+        let fullDate = yyyy + mm + dd;
+        this.props.history.push(`/comics/${fullDate}`);
+    };
+
 
     randomDate(e) {
         e.preventDefault();
@@ -100,6 +113,20 @@ class Comic extends React.Component {
               <>
                 <div className="comicWrapper">
                 <h2 className="comicDate">{date}</h2>
+                <br></br>
+                <div className="main_page_calendar">
+                    <DatePicker
+                        value={"SELECT BY DATE"}
+                        selected={new Date(year, month - 1, day)}
+                        className="calendar"
+                        selectsStart
+                        minDate={this.date1}
+                        maxDate={this.date2}
+                        onChange={event =>
+                            this.handleCalendarPick(event)
+                        }
+                    />
+                </div>
                 
                 {this.state.comic.datestring ?
                     <Link to={'/comics/' + nextDate}>
@@ -116,15 +143,18 @@ class Comic extends React.Component {
                 
                 <div className="comicControls">
                     <Link to={'/comics/' + prevDate}>
-                                <i className="fas fa-caret-left"></i>                    </Link>
+                        <i className="fas fa-caret-left"></i>
+                        <p className="nav-text">previous</p>                    
+                    </Link>
 
-                            <div>
-                                <button onClick={e => this.randomDate(e)}>
-                                    <i className="fas fa-random" />
-                                </button>
-                            </div>
+                    <button onClick={e => this.randomDate(e)}>
+                        <i className="fas fa-random" />
+                        <p className="nav-text">random</p>
+                    </button>
+
                     <Link to={'/comics/' + nextDate}>
-                                <i className="fas fa-caret-right"></i>
+                        <i className="fas fa-caret-right"></i>
+                        <p className="nav-text">next</p>
                     </Link>
                 </div>
                 

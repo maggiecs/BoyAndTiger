@@ -151,7 +151,6 @@ class LoginModal extends React.Component {
                 />
 
                 <TextField
-                  autoFocus
                   margin="dense"
                   id="name"
                   label="Password"

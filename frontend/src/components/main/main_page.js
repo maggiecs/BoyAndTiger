@@ -10,17 +10,7 @@ import Fade from "@material-ui/core/Fade";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
-// class MySection extends React.Component {
-   
-//    render() {
-//       return (
-//          <div className="section">
-//             <h3>banana</h3>
-//          </div>
-//       );
-//    }
-// }
+import { Link } from 'react-router-dom';
 
 class MainPage extends React.Component {
 
@@ -123,31 +113,29 @@ class MainPage extends React.Component {
                 >
                   <h1 className="logo">Boy and Tiger</h1>
 
-                  <img
-                    className="splashPageImage"
-                    alt="todays comic"
-                    src={
-                      "https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" +
-                      todayDate +
-                      ".jpg"
-                    }
-                  />
+                  <Link to={'/comics/' + todayDate}>
+                    <img
+                      className="splashPageImage"
+                      alt="todays comic"
+                      src={
+                        "https://s3.amazonaws.com/ch-comics/hdcalvinhobbes/" +
+                        todayDate +
+                        ".jpg"
+                      }
+                    />
+                  </Link>
+
+                  <div className="intro">
+                    <h2 className="intro-text">Explore the Calvin and Hobbes archives...</h2>
+                  </div>
 
                   <div className="main_page_nav">
                     {/* buttons go here */}
 
-                    <div className="randomWrapper">
-
-                      <button onClick={e => this.randomDate(e)}>
-                        <i className="fas fa-random" />
-
-                      </button>
-                    </div>
-
                     <div className="main_page_calendar">
                       <DatePicker
                         value={"SELECT BY DATE"}
-                        selected={this.date1 - 1}
+                        selected={new Date(1985, 10, 17)}
                         className="calendar"
                         selectsStart
                         minDate={this.date1}
@@ -158,15 +146,28 @@ class MainPage extends React.Component {
                       />
                     </div>
 
+                    <div className="randomWrapper">
+
+                      <Button 
+                        onClick={e => this.randomDate(e)}
+                        aria-owns={open ? "fade-menu" : undefined}
+                        aria-haspopup="true"
+                        variant="contained"
+                        style={{ backgroundColor: "white" }
+                        }>
+                        Random Comic
+                      </Button>
+                    </div>
+
                     <div>
                       <Button
                         aria-owns={open ? "fade-menu" : undefined}
                         aria-haspopup="true"
                         onClick={this.handleClick}
                         variant="contained"
-                        style={{ backgroundColor: "white" }}
+                        style={{ backgroundColor: "orange" }}
                       >
-                        Select Character
+                        Search Dialog
                       </Button>
                       <Menu
                         id="fade-menu"
@@ -199,15 +200,6 @@ class MainPage extends React.Component {
                       </Menu>
                     </div>
                   </div>
-
-                <div className="git-logo">
-                  <a
-                    href="https://github.com/maggiecs/BoyAndTiger"
-                    className="boy_tiger_github"
-                  >
-                    <i className="fab fa-github" style={{ backgroundColor: "white", padding: "2px", borderRadius: "50%" }} />
-                  </a>
-                </div>
 
                   <div className="next_section_button">
                     <button
@@ -331,8 +323,8 @@ class MainPage extends React.Component {
                         authoritative. He was heartbroken to find
                         they did not make his parents’ cardboard
                         boxes when they moved a few years ago. When
-                        he's not writing code, Gary likes to play
-                        video games and watch TV/movies.
+                        he's not writing code, Gary likes to consume
+                         pop culture.
                       </p>
                       <div className="personal_sites_wrapper">
                         <a href="https://www.garykangaroo.com/">
@@ -346,6 +338,14 @@ class MainPage extends React.Component {
                         </a>
                       </div>
                     </div>
+                  </div>
+                  <div className="git-logo">
+                    <a
+                      href="https://github.com/maggiecs/BoyAndTiger"
+                      className="boy_tiger_github"
+                    >
+                      <i className="fab fa-github" style={{ backgroundColor: "white", padding: "2px", borderRadius: "50%" }} />
+                    </a>
                   </div>
                 </div>
 

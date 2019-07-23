@@ -61,7 +61,7 @@ class NavBar extends React.Component {
         <div className="nav-link-list">
           <span>
             <Link to={"/profile"} className="nav-link">
-              Profile
+              My Comics
             </Link>
           </span>
 
